@@ -64,15 +64,95 @@
 		D0B882DE2BEB645700633FD8 /* Lawing-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D0B882DF2BEB645700633FD8 /* AppDelegate.swift */,
-				D0B882E12BEB645700633FD8 /* SceneDelegate.swift */,
-				D0B882E32BEB645700633FD8 /* ViewController.swift */,
-				D0B882E52BEB645700633FD8 /* Main.storyboard */,
-				D0B882E82BEB645900633FD8 /* Assets.xcassets */,
-				D0B882EA2BEB645900633FD8 /* LaunchScreen.storyboard */,
-				D0B882ED2BEB645900633FD8 /* Info.plist */,
+				D0B882FF2BEB6EB900633FD8 /* Application */,
+				D0B883002BEB6ED100633FD8 /* Network */,
+				D0B883012BEB6EDC00633FD8 /* Global */,
+				D0B883032BEB6F4100633FD8 /* Screen */,
 			);
 			path = "Lawing-iOS";
+			sourceTree = "<group>";
+		};
+		D0B882FF2BEB6EB900633FD8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D0B882DF2BEB645700633FD8 /* AppDelegate.swift */,
+				D0B882E12BEB645700633FD8 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D0B883002BEB6ED100633FD8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D0B883012BEB6EDC00633FD8 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				D0B883022BEB6F0800633FD8 /* Resources */,
+				D0B883052BEB6FE900633FD8 /* Extensions */,
+				D0B883042BEB6F6300633FD8 /* Supporting Files */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		D0B883022BEB6F0800633FD8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0B882E82BEB645900633FD8 /* Assets.xcassets */,
+				D0B882E52BEB645700633FD8 /* Main.storyboard */,
+				D0B882EA2BEB645900633FD8 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D0B883032BEB6F4100633FD8 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D0B882E32BEB645700633FD8 /* ViewController.swift */,
+				D0B883062BEB702B00633FD8 /* Login */,
+				D0B883072BEB703400633FD8 /* Join */,
+				D0B883082BEB704600633FD8 /* Main */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		D0B883042BEB6F6300633FD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0B882ED2BEB645900633FD8 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0B883052BEB6FE900633FD8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D0B883062BEB702B00633FD8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D0B883072BEB703400633FD8 /* Join */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
+		D0B883082BEB704600633FD8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +394,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X395BM5WW7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Lawing-iOS/Info.plist";
+				INFOPLIST_FILE = "Lawing-iOS/Global/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -342,7 +422,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X395BM5WW7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Lawing-iOS/Info.plist";
+				INFOPLIST_FILE = "Lawing-iOS/Global/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
