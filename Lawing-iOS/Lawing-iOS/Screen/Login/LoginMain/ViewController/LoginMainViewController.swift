@@ -25,7 +25,7 @@ final class LoginMainViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         
-        setDelegate()
+        setTarget()
     }
 }
 
@@ -33,6 +33,16 @@ extension LoginMainViewController {
     
     // MARK: - Private Method
     
-    private func setDelegate() {
+    private func setTarget() {
+        rootView.setupLoginButton(action: loginButtonTapped)
+        rootView.setupKakaoButton(action: kakaoButtonTapped)
+    }
+    
+    private func loginButtonTapped() {
+        print("loginButtonTapped")
+    }
+    
+    private func kakaoButtonTapped() {
+        print("kakaoButtonTapped")
     }
 }

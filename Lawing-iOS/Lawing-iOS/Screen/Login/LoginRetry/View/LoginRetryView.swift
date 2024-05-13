@@ -14,12 +14,17 @@ final class LoginRetryView: UIView {
     
     //MARK: - Properties
     
-    
+    typealias KakaoButtonAction = () -> Void
+    typealias RetryFaceIDButtonAction = () -> Void
+
+    private var kakaoButtonAction: KakaoButtonAction?
+    private var retryFaceIDButtonAction: KakaoButtonAction?
+
     //MARK: - UI Properties
     
     private let logoImageView = UIImageView()
     private let kakaoButton = UIButton()
-    private let retryFaceID = UIButton()
+    private let retryFaceIDButton = UIButton()
     
     // MARK: - Life Cycle
     
@@ -38,6 +43,18 @@ final class LoginRetryView: UIView {
 
 extension LoginRetryView {
     
+    //MARK: - targetView Method
+    
+    func setupKakaoButton(action: @escaping KakaoButtonAction) {
+        kakaoButtonAction = action
+        kakaoButton.addTarget(self, action: #selector(kakaoButtonTapped), for: .touchUpInside)
+    }
+    
+    func setupretryFaceIDButton(action: @escaping RetryFaceIDButtonAction) {
+        retryFaceIDButtonAction = action
+        retryFaceIDButton.addTarget(self, action: #selector(retryFaceIDButtonTapped), for: .touchUpInside)
+    }
+    
     // MARK: - Private Method
     
     private func setupStyle() {
@@ -53,7 +70,7 @@ extension LoginRetryView {
             $0.makeRounded(radius: 15)
         }
         
-        retryFaceID.do {
+        retryFaceIDButton.do {
             $0.setTitle("Face ID 다시 시도하기", for: .normal)
             $0.underlineTitle(forTitle: $0.titleLabel?.text ?? "")
             $0.setTitleColor(.lawingGray2, for: .normal)
@@ -65,7 +82,7 @@ extension LoginRetryView {
         self.addSubviews(
             logoImageView,
             kakaoButton,
-            retryFaceID
+            retryFaceIDButton
         )
     }
     
@@ -82,7 +99,7 @@ extension LoginRetryView {
             $0.height.equalTo(56)
         }
         
-        retryFaceID.snp.makeConstraints {
+        retryFaceIDButton.snp.makeConstraints {
             $0.top.equalTo(kakaoButton.snp.bottom).offset(34)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(14)
@@ -90,8 +107,13 @@ extension LoginRetryView {
         }
     }
     
-    //MARK: - Method
+    //MARK: - @Objc Method
     
+    @objc private func kakaoButtonTapped() {
+        kakaoButtonAction?()
+    }
+    
+    @objc private func retryFaceIDButtonTapped() {
+        retryFaceIDButtonAction?()
+    }
 }
-
-

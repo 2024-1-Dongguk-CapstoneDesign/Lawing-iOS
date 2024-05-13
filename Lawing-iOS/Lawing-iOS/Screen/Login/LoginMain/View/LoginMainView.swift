@@ -14,7 +14,12 @@ final class LoginMainView: UIView {
     
     //MARK: - Properties
     
-    
+    typealias LoginButtonAction = () -> Void
+    typealias KakaoButtonAction = () -> Void
+
+    private var loginButtonAction: LoginButtonAction?
+    private var kakaoButtonAction: KakaoButtonAction?
+
     //MARK: - UI Properties
     
     private let onboardingImageView = UIImageView()
@@ -38,6 +43,18 @@ final class LoginMainView: UIView {
 }
 
 extension LoginMainView {
+    
+    //MARK: - targetView Method
+    
+    func setupLoginButton(action: @escaping LoginButtonAction) {
+        loginButtonAction = action
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    func setupKakaoButton(action: @escaping KakaoButtonAction) {
+        kakaoButtonAction = action
+        kakaoButton.addTarget(self, action: #selector(kakaoButtonTapped), for: .touchUpInside)
+    }
     
     // MARK: - Private Method
     
@@ -105,7 +122,13 @@ extension LoginMainView {
         }
     }
     
-    //MARK: - Method
+    //MARK: - @Objc Method
     
+    @objc private func loginButtonTapped() {
+        loginButtonAction?()
+    }
+    
+    @objc private func kakaoButtonTapped() {
+        kakaoButtonAction?()
+    }
 }
-

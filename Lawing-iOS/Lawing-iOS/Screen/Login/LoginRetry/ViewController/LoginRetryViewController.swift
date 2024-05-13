@@ -25,7 +25,7 @@ final class LoginRetryViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         
-        setDelegate()
+        setTarget()
     }
 }
 
@@ -33,6 +33,16 @@ extension LoginRetryViewController {
     
     // MARK: - Private Method
     
-    private func setDelegate() {
+    private func setTarget() {
+        rootView.setupKakaoButton(action: kakaoButtonTapped)
+        rootView.setupretryFaceIDButton(action: retryFaceIDButtonTapped)
+    }
+    
+    private func kakaoButtonTapped() {
+        print("kakaoButtonTapped")
+    }
+    
+    private func retryFaceIDButtonTapped() {
+        print("retryFaceIDButtonTapped")
     }
 }
