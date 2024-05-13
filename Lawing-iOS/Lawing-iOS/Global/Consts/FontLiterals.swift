@@ -23,8 +23,8 @@ extension UIFont {
     
     // MARK: - button
     
-    @nonobjc class var button1SemiBold: UIFont {
-        return UIFont.font(.pretendardSemiBold, ofSize: 18)
+    @nonobjc class var button1Bold: UIFont {
+        return UIFont.font(.pretendardBold, ofSize: 18)
     }
     
     @nonobjc class var button2SemiBold: UIFont {
