@@ -1,5 +1,5 @@
 //
-//  LicenseInfoViewController.swift
+//  LicenseInfoModalViewController.swift
 //  Lawing-iOS
 //
 //  Created by 조혜린 on 5/14/24.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class LicenseInfoViewController: UIViewController {
+final class LicenseInfoModalViewController: UIViewController {
     
     //MARK: - Properties
     
-    private let rootView = LicenseInfoView()
+    private let rootView = LicenseInfoModalView()
     
     // MARK: - Life Cycle
     
@@ -29,7 +29,7 @@ final class LicenseInfoViewController: UIViewController {
     }
 }
 
-extension LicenseInfoViewController {
+extension LicenseInfoModalViewController {
     
     // MARK: - Private Method
     

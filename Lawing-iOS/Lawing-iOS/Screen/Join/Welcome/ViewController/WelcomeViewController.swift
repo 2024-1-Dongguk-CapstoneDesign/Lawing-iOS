@@ -35,7 +35,7 @@ extension WelcomeViewController {
     
     private func presentLicenseInfoView() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-            let modalViewController = LicenseInfoViewController()
+            let modalViewController = LicenseInfoModalViewController()
             if let sheet = modalViewController.sheetPresentationController {
                 sheet.preferredCornerRadius = 40
                 sheet.prefersGrabberVisible = true

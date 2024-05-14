@@ -1,5 +1,5 @@
 //
-//  LicenseInfoView.swift
+//  LicenseInfoModalView.swift
 //  Lawing-iOS
 //
 //  Created by 조혜린 on 5/14/24.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class LicenseInfoView: UIView {
+final class LicenseInfoModalView: UIView {
     
     //MARK: - Properties
     
@@ -39,7 +39,7 @@ final class LicenseInfoView: UIView {
     }
 }
 
-extension LicenseInfoView {
+extension LicenseInfoModalView {
     
     //MARK: - targetView Method
     
