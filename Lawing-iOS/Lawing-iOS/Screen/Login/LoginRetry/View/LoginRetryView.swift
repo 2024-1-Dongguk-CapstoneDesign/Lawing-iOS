@@ -14,16 +14,14 @@ final class LoginRetryView: UIView {
     
     //MARK: - Properties
     
-    typealias KakaoButtonAction = () -> Void
     typealias RetryFaceIDButtonAction = () -> Void
 
-    private var kakaoButtonAction: KakaoButtonAction?
-    private var retryFaceIDButtonAction: KakaoButtonAction?
+    private var retryFaceIDButtonAction: RetryFaceIDButtonAction?
 
     //MARK: - UI Properties
     
     private let logoImageView = UIImageView()
-    private let kakaoButton = UIButton()
+    private let titleLabel = UILabel()
     private let retryFaceIDButton = UIButton()
     
     // MARK: - Life Cycle
@@ -45,11 +43,6 @@ extension LoginRetryView {
     
     //MARK: - targetView Method
     
-    func setupKakaoButton(action: @escaping KakaoButtonAction) {
-        kakaoButtonAction = action
-        kakaoButton.addTarget(self, action: #selector(kakaoButtonTapped), for: .touchUpInside)
-    }
-    
     func setupretryFaceIDButton(action: @escaping RetryFaceIDButtonAction) {
         retryFaceIDButtonAction = action
         retryFaceIDButton.addTarget(self, action: #selector(retryFaceIDButtonTapped), for: .touchUpInside)
@@ -62,56 +55,50 @@ extension LoginRetryView {
         
         logoImageView.backgroundColor = .lightGray
         
-        kakaoButton.do {
-            $0.backgroundColor = .kakaoYellow
-            $0.setTitle("카카오 계정으로 계속하기", for: .normal)
-            $0.setTitleColor(.lawingBlack, for: .normal)
-            $0.titleLabel?.font = .button1Bold
-            $0.makeRounded(radius: 15)
+        titleLabel.do {
+            $0.text = "로잉을 이용하기 위해서는\n인증이 필요합니다!"
+            $0.numberOfLines = 2
+            $0.textAlignment = .center
+            $0.font = .titleSemiBold
         }
         
         retryFaceIDButton.do {
+            $0.backgroundColor = .lawingGreen
             $0.setTitle("Face ID 다시 시도하기", for: .normal)
-            $0.underlineTitle(forTitle: $0.titleLabel?.text ?? "")
-            $0.setTitleColor(.lawingGray2, for: .normal)
-            $0.titleLabel?.font = .caption3SemiBold
+            $0.setTitleColor(.lawingBlack, for: .normal)
+            $0.titleLabel?.font = .button1Bold
+            $0.makeRounded(radius: 15)
         }
     }
     
     private func setupHierarchy() {
         self.addSubviews(
             logoImageView,
-            kakaoButton,
+            titleLabel,
             retryFaceIDButton
         )
     }
     
     private func setupLayout() {
         logoImageView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(227)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(180)
             $0.centerX.equalToSuperview()
             $0.height.width.equalTo(149)
         }
         
-        kakaoButton.snp.makeConstraints {
-            $0.top.equalTo(logoImageView.snp.bottom).offset(65)
-            $0.horizontalEdges.equalToSuperview().inset(39)
-            $0.height.equalTo(56)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(40)
+            $0.centerX.equalToSuperview()
         }
         
         retryFaceIDButton.snp.makeConstraints {
-            $0.top.equalTo(kakaoButton.snp.bottom).offset(34)
-            $0.centerX.equalToSuperview()
-            $0.height.equalTo(14)
-            $0.width.equalTo(128)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(39)
+            $0.height.equalTo(56)
         }
     }
     
     //MARK: - @Objc Method
-    
-    @objc private func kakaoButtonTapped() {
-        kakaoButtonAction?()
-    }
     
     @objc private func retryFaceIDButtonTapped() {
         retryFaceIDButtonAction?()

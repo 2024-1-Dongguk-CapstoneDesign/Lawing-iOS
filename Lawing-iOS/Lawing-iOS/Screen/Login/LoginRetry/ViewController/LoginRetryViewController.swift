@@ -7,11 +7,14 @@
 
 import UIKit
 
+import LocalAuthentication
+
 final class LoginRetryViewController: UIViewController {
     
     //MARK: - Properties
     
     private let rootView = LoginRetryView()
+    private let authContext = LAContext()
     
     // MARK: - Life Cycle
     
@@ -34,15 +37,21 @@ extension LoginRetryViewController {
     // MARK: - Private Method
     
     private func setTarget() {
-        rootView.setupKakaoButton(action: kakaoButtonTapped)
         rootView.setupretryFaceIDButton(action: retryFaceIDButtonTapped)
-    }
-    
-    private func kakaoButtonTapped() {
-        print("kakaoButtonTapped")
     }
     
     private func retryFaceIDButtonTapped() {
         print("retryFaceIDButtonTapped")
+        
+        authContext.localizedFallbackTitle = ""
+        authContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+                                   localizedReason: "인증이 필요합니다.") { (success, error) in
+            DispatchQueue.main.async {
+                if success {
+                    print("인증에 성공했습니다.")
+                    //킥보드 이용 뷰컨 푸시
+                }
+            }
+        }
     }
 }
