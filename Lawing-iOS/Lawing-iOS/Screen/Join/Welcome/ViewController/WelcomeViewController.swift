@@ -34,21 +34,23 @@ extension WelcomeViewController {
     // MARK: - Private Method
     
     private func presentLicenseInfoView() {
-        let modalViewController = LicenseInfoViewController()
-        if let sheet = modalViewController.sheetPresentationController {
-            sheet.preferredCornerRadius = 40
-            sheet.prefersGrabberVisible = true
-            if #available(iOS 16.0, *) {
-                sheet.detents = [
-                    .custom { _ in
-                        return 360
-                    }
-                ]
-            } else {
-                sheet.detents = [.medium()]
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+            let modalViewController = LicenseInfoViewController()
+            if let sheet = modalViewController.sheetPresentationController {
+                sheet.preferredCornerRadius = 40
+                sheet.prefersGrabberVisible = true
+                if #available(iOS 16.0, *) {
+                    sheet.detents = [
+                        .custom { _ in
+                            return 360
+                        }
+                    ]
+                } else {
+                    sheet.detents = [.medium()]
+                }
             }
+            
+            self.present(modalViewController, animated: true)
         }
-        
-        self.present(modalViewController, animated: true)
     }
 }
