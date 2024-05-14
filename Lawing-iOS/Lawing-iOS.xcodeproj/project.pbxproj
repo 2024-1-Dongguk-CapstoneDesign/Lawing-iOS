@@ -11,6 +11,10 @@
 		D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2522BF2941A0025DF0B /* LoginMainView.swift */; };
 		D065F2592BF29CDD0025DF0B /* LoginRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2582BF29CDD0025DF0B /* LoginRetryView.swift */; };
 		D065F25B2BF29CEC0025DF0B /* LoginRetryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F25A2BF29CEC0025DF0B /* LoginRetryViewController.swift */; };
+		D065F25E2BF39E2B0025DF0B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F25D2BF39E2B0025DF0B /* WelcomeView.swift */; };
+		D065F2622BF39E570025DF0B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2612BF39E570025DF0B /* WelcomeViewController.swift */; };
+		D065F2672BF3A45E0025DF0B /* LicenseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2662BF3A45E0025DF0B /* LicenseInfoViewController.swift */; };
+		D065F2692BF3A4720025DF0B /* LicenseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2682BF3A4720025DF0B /* LicenseInfoView.swift */; };
 		D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B882DF2BEB645700633FD8 /* AppDelegate.swift */; };
 		D0B882E22BEB645700633FD8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B882E12BEB645700633FD8 /* SceneDelegate.swift */; };
 		D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B882E32BEB645700633FD8 /* ViewController.swift */; };
@@ -40,6 +44,10 @@
 		D065F2522BF2941A0025DF0B /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		D065F2582BF29CDD0025DF0B /* LoginRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRetryView.swift; sourceTree = "<group>"; };
 		D065F25A2BF29CEC0025DF0B /* LoginRetryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRetryViewController.swift; sourceTree = "<group>"; };
+		D065F25D2BF39E2B0025DF0B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		D065F2612BF39E570025DF0B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		D065F2662BF3A45E0025DF0B /* LicenseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseInfoViewController.swift; sourceTree = "<group>"; };
+		D065F2682BF3A4720025DF0B /* LicenseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseInfoView.swift; sourceTree = "<group>"; };
 		D0B882DC2BEB645700633FD8 /* Lawing-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lawing-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B882DF2BEB645700633FD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B882E12BEB645700633FD8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +135,56 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D065F25C2BF39D980025DF0B /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				D065F2602BF39E430025DF0B /* View */,
+				D065F25F2BF39E370025DF0B /* ViewController */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		D065F25F2BF39E370025DF0B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D065F2612BF39E570025DF0B /* WelcomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D065F2602BF39E430025DF0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D065F25D2BF39E2B0025DF0B /* WelcomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D065F2632BF3A4220025DF0B /* LicenseInfoModal */ = {
+			isa = PBXGroup;
+			children = (
+				D065F2652BF3A4490025DF0B /* View */,
+				D065F2642BF3A43C0025DF0B /* ViewController */,
+			);
+			path = LicenseInfoModal;
+			sourceTree = "<group>";
+		};
+		D065F2642BF3A43C0025DF0B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D065F2662BF3A45E0025DF0B /* LicenseInfoViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D065F2652BF3A4490025DF0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D065F2682BF3A4720025DF0B /* LicenseInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D0B882D32BEB645700633FD8 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +256,7 @@
 				D0B882E32BEB645700633FD8 /* ViewController.swift */,
 				D0B883062BEB702B00633FD8 /* Login */,
 				D0B883072BEB703400633FD8 /* Join */,
+				D065F2632BF3A4220025DF0B /* LicenseInfoModal */,
 				D0B883082BEB704600633FD8 /* Main */,
 			);
 			path = Screen;
@@ -236,6 +295,7 @@
 		D0B883072BEB703400633FD8 /* Join */ = {
 			isa = PBXGroup;
 			children = (
+				D065F25C2BF39D980025DF0B /* Welcome */,
 			);
 			path = Join;
 			sourceTree = "<group>";
@@ -357,12 +417,16 @@
 				D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */,
 				D0B883232BEB81F400633FD8 /* FontLiterals.swift in Sources */,
 				D0B883172BEB76BF00633FD8 /* UILabel+.swift in Sources */,
+				D065F25E2BF39E2B0025DF0B /* WelcomeView.swift in Sources */,
 				D065F2592BF29CDD0025DF0B /* LoginRetryView.swift in Sources */,
+				D065F2622BF39E570025DF0B /* WelcomeViewController.swift in Sources */,
+				D065F2672BF3A45E0025DF0B /* LicenseInfoViewController.swift in Sources */,
 				D0B8830C2BEB714A00633FD8 /* UIStackView+.swift in Sources */,
 				D065F25B2BF29CEC0025DF0B /* LoginRetryViewController.swift in Sources */,
 				D0B8830E2BEB716300633FD8 /* UIButton+.swift in Sources */,
 				D0B883152BEB71F300633FD8 /* UIViewController+.swift in Sources */,
 				D0B883112BEB71A700633FD8 /* UITextField+.swift in Sources */,
+				D065F2692BF3A4720025DF0B /* LicenseInfoView.swift in Sources */,
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
