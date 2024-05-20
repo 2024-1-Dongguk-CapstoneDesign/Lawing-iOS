@@ -34,9 +34,26 @@ extension EnterLicenseInfoViewController {
     // MARK: - Private Method
     
     private func setTarget() {
+        rootView.setupregisterLicenseButton(action: registerLicenseButtonTapped)
+        rootView.setupClearButton(action: clearButtonTapped)
     }
     
     private func registerLicenseButtonTapped() {
         print("registerLicenseButtonTapped")
+    }
+    
+    private func clearButtonTapped(_ button: UIButton) {
+        switch button.tag {
+        case 1:
+            rootView.setTextFieldInitialState(textFieldTag: 0)
+        case 2:
+            rootView.setTextFieldInitialState(textFieldTag: 1)
+        case 3:
+            rootView.setTextFieldInitialState(textFieldTag: 2)
+        case 4:
+            rootView.setTextFieldInitialState(textFieldTag: 3)
+        default:
+            return
+        }
     }
 }

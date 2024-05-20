@@ -14,9 +14,11 @@ final class EnterLicenseInfoView: UIView {
     
     //MARK: - Properties
     
-    typealias RegisterLicenseButtonAction = () -> Void
+    typealias RegisterButtonAction = () -> Void
+    typealias ClearButtonAction = (_ button: UIButton) -> Void
 
-    private var registerLicenseButtonAction: RegisterLicenseButtonAction?
+    private var registerButtonAction: RegisterButtonAction?
+    private var clearButtonAction: ClearButtonAction?
 
     //MARK: - UI Properties
     
@@ -38,6 +40,22 @@ final class EnterLicenseInfoView: UIView {
     private let viewMoreButton = UIButton()
     private let registerButton = UIButton()
     
+    private let clearButton: [UIButton] = {
+        var buttons = [UIButton]()
+        
+        for i in 1...4 {
+            let button = UIButton()
+            
+            button.setImage(UIImage(resource: .clearBtnIcon), for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: 20, height: 22)
+            button.tag = i
+            
+            buttons.append(button)
+        }
+        
+        return buttons
+    }()
+    
     private let securityCircleView: [UIView] = {
         var views = [UIView]()
         
@@ -45,7 +63,7 @@ final class EnterLicenseInfoView: UIView {
             let view = UIView()
             view.snp.makeConstraints { $0.width.height.equalTo(12) }
             view.makeRounded(radius: 6)
-            view.backgroundColor = .lawingGrey3
+            view.backgroundColor = .lawingGray3
             
             views.append(view)
         }
@@ -72,7 +90,17 @@ extension EnterLicenseInfoView {
     
     //MARK: - targetView Method
     
+    func setupregisterLicenseButton(action: @escaping RegisterButtonAction) {
+        registerButtonAction = action
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+    }
     
+    func setupClearButton(action: @escaping ClearButtonAction) {
+        clearButtonAction = action
+        for button in clearButton {
+            button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
+        }
+    }
     
     // MARK: - Private Method
     
@@ -90,6 +118,7 @@ extension EnterLicenseInfoView {
             $0.setPlaceholder(placeholder: "지역", fontColor: .lawingGray1, font: .caption2Medium)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.delegate = self
         }
         
         showPickerButton.do {
@@ -101,6 +130,8 @@ extension EnterLicenseInfoView {
             $0.setPlaceholder(placeholder: "운전면허번호 10자리", fontColor: .lawingGray1, font: .caption2Medium)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.tag = 0
+            $0.delegate = self
         }
         
         nameLabel.do {
@@ -114,6 +145,8 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.tag = 1
+            $0.delegate = self
         }
         
         serialNumberLabel.do {
@@ -127,6 +160,8 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.tag = 2
+            $0.delegate = self
         }
         
         socialSecurityNumberLabel.do {
@@ -140,12 +175,22 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.tag = 3
+            $0.delegate = self
         }
         
         socialSecurityNumberSecondTextField.do {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.delegate = self
+        }
+        
+        for textField in [licenseNumberTextField, nameTextField, serialNumberTextField, socialSecurityNumberFirstTextField] {
+            let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 22))
+            rightView.addSubview(clearButton[textField.tag])
+            textField.rightViewMode = .never
+            textField.rightView = rightView
         }
         
         circleStackView.do {
@@ -314,10 +359,80 @@ extension EnterLicenseInfoView {
         }
     }
     
+    //MARK: - Method
+    
+    func setTextFieldInitialState(textFieldTag: Int) {
+        switch textFieldTag {
+        case 0:
+            licenseNumberTextField.text = ""
+            licenseNumberTextField.rightViewMode = .never
+        case 1:
+            nameTextField.text = ""
+            nameTextField.rightViewMode = .never
+        case 2:
+            serialNumberTextField.text = ""
+            serialNumberTextField.rightViewMode = .never
+        case 3:
+            socialSecurityNumberFirstTextField.text = ""
+            socialSecurityNumberFirstTextField.rightViewMode = .never
+        default:
+            return
+        }
+    }
+    
     //MARK: - @Objc Method
     
-    @objc private func registerLicenseButtonTapped() {
-        registerLicenseButtonAction?()
+    @objc private func registerButtonTapped() {
+        registerButtonAction?()
+    }
+    
+    @objc private func clearButtonTapped(_ button: UIButton) {
+        clearButtonAction?(button)
     }
 }
 
+extension EnterLicenseInfoView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.shadowColor = UIColor.lawingGray3.cgColor
+        
+        switch textField.tag {
+        case 1:
+            nameLabel.textColor = .lawingGray3
+        case 2:
+            serialNumberLabel.textColor = .lawingGray3
+        case 3:
+            socialSecurityNumberLabel.textColor = .lawingGray3
+        default: return
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        let text = textField.text ?? ""
+        
+        textField.rightViewMode = .never
+
+        if text.isEmpty {
+            textField.layer.shadowColor = UIColor.lawingGray1.cgColor
+            switch textField.tag {
+            case 1:
+                nameLabel.textColor = .lawingGray1
+            case 2:
+                serialNumberLabel.textColor = .lawingGray1
+            case 3:
+                socialSecurityNumberLabel.textColor = .lawingGray1
+            default: return
+            }
+        }
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let text = textField.text ?? ""
+
+        if text.isEmpty {
+            textField.rightViewMode = .never
+        } else {
+            textField.rightViewMode = .always
+        }
+    }
+}
