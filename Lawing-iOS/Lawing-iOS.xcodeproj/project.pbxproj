@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
 		D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */; };
 		D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2522BF2941A0025DF0B /* LoginMainView.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
 		D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		D065F2522BF2941A0025DF0B /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		D0B883082BEB704600633FD8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */,
+				D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */,
 				D0B883232BEB81F400633FD8 /* FontLiterals.swift in Sources */,
 				D0B883172BEB76BF00633FD8 /* UILabel+.swift in Sources */,
 				D065F25E2BF39E2B0025DF0B /* WelcomeView.swift in Sources */,
