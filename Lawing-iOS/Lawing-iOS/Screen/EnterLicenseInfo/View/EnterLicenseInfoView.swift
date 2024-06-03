@@ -14,17 +14,21 @@ final class EnterLicenseInfoView: UIView {
     
     //MARK: - Properties
     
-    typealias RegisterButtonAction = () -> Void
+    typealias ShowPickerButtonAction = () -> Void
     typealias ClearButtonAction = (_ button: UIButton) -> Void
+    typealias RegisterButtonAction = () -> Void
+    typealias CameraButtonAction = () -> Void
 
-    private var registerButtonAction: RegisterButtonAction?
+    private var showPickerButtonAction: ShowPickerButtonAction?
     private var clearButtonAction: ClearButtonAction?
-
+    private var registerButtonAction: RegisterButtonAction?
+    private var cameraButtonAction: CameraButtonAction?
     //MARK: - UI Properties
     
     private let titleLabel = UILabel()
-    private let regionTextField = UITextField()
+    let regionTextField = UITextField()
     private let showPickerButton = UIButton()
+    let regionPickerView = UIPickerView()
     private let licenseNumberTextField = UITextField()
     private let nameLabel = UILabel()
     private let nameTextField = UITextField()
@@ -90,9 +94,23 @@ extension EnterLicenseInfoView {
     
     //MARK: - targetView Method
     
-    func setupregisterLicenseButton(action: @escaping RegisterButtonAction) {
-        registerButtonAction = action
-        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+    func setTextFieldDelegate(_ viewController: UITextFieldDelegate) {
+        regionTextField.delegate = viewController
+        licenseNumberTextField.delegate = viewController
+        nameTextField.delegate = viewController
+        serialNumberTextField.delegate = viewController
+        socialSecurityNumberFirstTextField.delegate = viewController
+        socialSecurityNumberSecondTextField.delegate = viewController
+    }
+    
+    func setPickerViewDelegate(_ viewController: UIViewController) {
+        regionPickerView.delegate = viewController as? UIPickerViewDelegate
+        regionPickerView.dataSource = viewController as? UIPickerViewDataSource
+    }
+    
+    func setupShowPickerButton(action: @escaping ShowPickerButtonAction) {
+        showPickerButtonAction = action
+        showPickerButton.addTarget(self, action: #selector(showPickerButtonTapped), for: .touchUpInside)
     }
     
     func setupClearButton(action: @escaping ClearButtonAction) {
@@ -100,6 +118,16 @@ extension EnterLicenseInfoView {
         for button in clearButton {
             button.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         }
+    }
+    
+    func setupregisterLicenseButton(action: @escaping RegisterButtonAction) {
+        registerButtonAction = action
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+    }
+    
+    func setupCameraButton(action: @escaping CameraButtonAction) {
+        cameraButtonAction = action
+        cameraButton.addTarget(self, action: #selector(cameraButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Private Method
@@ -113,25 +141,32 @@ extension EnterLicenseInfoView {
             $0.textColor = .lawingBlack
         }
         
+        showPickerButton.do {
+            $0.setImage(UIImage(resource: .arrowDown), for: .normal)
+            $0.frame = CGRect(x: 0, y: 0, width: 20, height: 22)
+        }
+        
         regionTextField.do {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setPlaceholder(placeholder: "지역", fontColor: .lawingGray1, font: .caption2Medium)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
-            $0.delegate = self
+            $0.tag = 0
+            
+            let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 22))
+            rightView.addSubview(showPickerButton)
+            $0.rightViewMode = .always
+            $0.rightView = rightView
         }
         
-        showPickerButton.do {
-            $0.setImage(UIImage(resource: .arrowDown), for: .normal)
-        }
+        
         
         licenseNumberTextField.do {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setPlaceholder(placeholder: "운전면허번호 10자리", fontColor: .lawingGray1, font: .caption2Medium)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
-            $0.tag = 0
-            $0.delegate = self
+            $0.tag = 1
         }
         
         nameLabel.do {
@@ -145,8 +180,7 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
-            $0.tag = 1
-            $0.delegate = self
+            $0.tag = 2
         }
         
         serialNumberLabel.do {
@@ -160,8 +194,7 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
-            $0.tag = 2
-            $0.delegate = self
+            $0.tag = 3
         }
         
         socialSecurityNumberLabel.do {
@@ -175,20 +208,18 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
-            $0.tag = 3
-            $0.delegate = self
+            $0.tag = 4
         }
         
         socialSecurityNumberSecondTextField.do {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
-            $0.delegate = self
         }
         
         for textField in [licenseNumberTextField, nameTextField, serialNumberTextField, socialSecurityNumberFirstTextField] {
             let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 22))
-            rightView.addSubview(clearButton[textField.tag])
+            rightView.addSubview(clearButton[textField.tag - 1])
             textField.rightViewMode = .never
             textField.rightView = rightView
         }
@@ -266,11 +297,6 @@ extension EnterLicenseInfoView {
             $0.leading.equalToSuperview().inset(26)
             $0.height.equalTo(41)
             $0.width.equalTo(136)
-        }
-        
-        showPickerButton.snp.makeConstraints {
-            $0.centerY.equalTo(regionTextField.snp.centerY)
-            $0.trailing.equalTo(regionTextField.snp.trailing).offset(-5)
         }
         
         licenseNumberTextField.snp.makeConstraints {
@@ -363,16 +389,16 @@ extension EnterLicenseInfoView {
     
     func setTextFieldInitialState(textFieldTag: Int) {
         switch textFieldTag {
-        case 0:
+        case 1:
             licenseNumberTextField.text = ""
             licenseNumberTextField.rightViewMode = .never
-        case 1:
+        case 2:
             nameTextField.text = ""
             nameTextField.rightViewMode = .never
-        case 2:
+        case 3:
             serialNumberTextField.text = ""
             serialNumberTextField.rightViewMode = .never
-        case 3:
+        case 4:
             socialSecurityNumberFirstTextField.text = ""
             socialSecurityNumberFirstTextField.rightViewMode = .never
         default:
@@ -380,59 +406,33 @@ extension EnterLicenseInfoView {
         }
     }
     
-    //MARK: - @Objc Method
+    func setLabelTextColor(textFieldTag: Int, isEditing: Bool) {
+        switch textFieldTag {
+        case 2:
+            isEditing ? (nameLabel.textColor = .lawingGray3) : (nameLabel.textColor = .lawingGray1)
+        case 3:
+            isEditing ? (serialNumberLabel.textColor = .lawingGray3) : (serialNumberLabel.textColor = .lawingGray1)
+        case 4:
+            isEditing ? (socialSecurityNumberLabel.textColor = .lawingGray3) : (socialSecurityNumberLabel.textColor = .lawingGray1)
+        default: return
+        }
+    }
     
-    @objc private func registerButtonTapped() {
-        registerButtonAction?()
+    //MARK: - @Objc Method
+
+    @objc private func showPickerButtonTapped() {
+        showPickerButtonAction?()
     }
     
     @objc private func clearButtonTapped(_ button: UIButton) {
         clearButtonAction?(button)
     }
-}
-
-extension EnterLicenseInfoView: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.shadowColor = UIColor.lawingGray3.cgColor
-        
-        switch textField.tag {
-        case 1:
-            nameLabel.textColor = .lawingGray3
-        case 2:
-            serialNumberLabel.textColor = .lawingGray3
-        case 3:
-            socialSecurityNumberLabel.textColor = .lawingGray3
-        default: return
-        }
+    @objc private func registerButtonTapped() {
+        registerButtonAction?()
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        let text = textField.text ?? ""
-        
-        textField.rightViewMode = .never
-
-        if text.isEmpty {
-            textField.layer.shadowColor = UIColor.lawingGray1.cgColor
-            switch textField.tag {
-            case 1:
-                nameLabel.textColor = .lawingGray1
-            case 2:
-                serialNumberLabel.textColor = .lawingGray1
-            case 3:
-                socialSecurityNumberLabel.textColor = .lawingGray1
-            default: return
-            }
-        }
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        let text = textField.text ?? ""
-
-        if text.isEmpty {
-            textField.rightViewMode = .never
-        } else {
-            textField.rightViewMode = .always
-        }
+    @objc private func cameraButtonTapped() {
+        cameraButtonAction?()
     }
 }
