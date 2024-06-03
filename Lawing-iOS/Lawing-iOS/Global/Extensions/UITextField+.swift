@@ -23,8 +23,15 @@ extension UITextField {
         }
     }
     
-    func changePlaceholderColor(forPlaceHolder: String, forColor: UIColor) {
-        self.attributedPlaceholder = NSAttributedString(string: forPlaceHolder, attributes: [NSAttributedString.Key.foregroundColor: forColor])
+    func setPlaceholder(placeholder: String, fontColor: UIColor?, font: UIFont) {
+        self.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                        attributes: [.foregroundColor: fontColor!,
+                                                                     .font: font])
+    }
+    
+    func setTextFont(forFont: UIFont, forFontColor: UIColor) {
+        self.font = forFont
+        self.textColor = forFontColor
     }
     
     /// 자간 설정 메서드
@@ -32,5 +39,16 @@ extension UITextField {
         let attributedStr = NSMutableAttributedString(string: self.text ?? "")
         attributedStr.addAttribute(NSAttributedString.Key.kern, value: spacing, range: NSMakeRange(0, attributedStr.length))
         self.attributedText = attributedStr
+    }
+    
+    func setUnderline(forBackGroundColor: UIColor, forUnderLineColor: UIColor, forWidth: CGFloat) {
+        self.borderStyle = .none
+        self.backgroundColor = forBackGroundColor
+        
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = forUnderLineColor.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: forWidth)
+        self.layer.shadowOpacity = 1.0
+        self.layer.shadowRadius = 0.0
     }
 }

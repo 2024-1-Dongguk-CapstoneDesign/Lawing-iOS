@@ -25,7 +25,7 @@ extension UIColor {
         return UIColor(hex: "#FFFFFF")
     }
     
-    static var lawingGrey3: UIColor {
+    static var lawingGray3: UIColor {
         return UIColor(hex: "#898A8D")
     }
     
