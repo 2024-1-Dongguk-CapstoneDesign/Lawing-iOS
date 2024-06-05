@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol dismissModalDelegate: AnyObject {
+    func dismissModalAndPushViewController()
+}
+
 final class LicenseInfoModalViewController: UIViewController {
     
     //MARK: - Properties
+    
+    weak var delegate: dismissModalDelegate?
     
     private let rootView = LicenseInfoModalView()
     
@@ -38,6 +44,7 @@ extension LicenseInfoModalViewController {
     }
     
     private func registerLicenseButtonTapped() {
-        print("registerLicenseButtonTapped")
+        delegate?.dismissModalAndPushViewController()
+        self.dismiss(animated: false)
     }
 }
