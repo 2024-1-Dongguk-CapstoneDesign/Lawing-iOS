@@ -45,6 +45,10 @@
 		D0E6411E2C0F5341003B43CB /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D0E6411D2C0F5341003B43CB /* KakaoSDKAuth */; };
 		D0E641202C0F5341003B43CB /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = D0E6411F2C0F5341003B43CB /* KakaoSDKCommon */; };
 		D0E641222C0F5341003B43CB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = D0E641212C0F5341003B43CB /* KakaoSDKUser */; };
+		D0E6412E2C0F88A7003B43CB /* LisenceValidRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6412D2C0F88A6003B43CB /* LisenceValidRequestDTO.swift */; };
+		D0E641302C0F895E003B43CB /* LisenceResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6412F2C0F895E003B43CB /* LisenceResponseDTO.swift */; };
+		D0E641342C0F8B20003B43CB /* LoginTypeRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E641332C0F8B20003B43CB /* LoginTypeRequestDTO.swift */; };
+		D0E641362C0F8B7C003B43CB /* MemberTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E641352C0F8B7C003B43CB /* MemberTokenResponseDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +85,10 @@
 		D0B883222BEB81F400633FD8 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		D0B883242BEB91B900633FD8 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
 		D0E6411A2C0E2B22003B43CB /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		D0E6412D2C0F88A6003B43CB /* LisenceValidRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LisenceValidRequestDTO.swift; sourceTree = "<group>"; };
+		D0E6412F2C0F895E003B43CB /* LisenceResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LisenceResponseDTO.swift; sourceTree = "<group>"; };
+		D0E641332C0F8B20003B43CB /* LoginTypeRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTypeRequestDTO.swift; sourceTree = "<group>"; };
+		D0E641352C0F8B7C003B43CB /* MemberTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTokenResponseDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +283,8 @@
 		D0B883002BEB6ED100633FD8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D0E641252C0F8206003B43CB /* License */,
+				D0E641242C0F81FD003B43CB /* Member */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -380,6 +390,72 @@
 			path = Consts;
 			sourceTree = "<group>";
 		};
+		D0E641242C0F81FD003B43CB /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				D0E641372C104712003B43CB /* DTO */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
+		D0E641252C0F8206003B43CB /* License */ = {
+			isa = PBXGroup;
+			children = (
+				D0E6412A2C0F86CE003B43CB /* DTO */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
+		D0E6412A2C0F86CE003B43CB /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				D0E6412B2C0F86E8003B43CB /* Request */,
+				D0E6412C2C0F86EF003B43CB /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		D0E6412B2C0F86E8003B43CB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				D0E6412D2C0F88A6003B43CB /* LisenceValidRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		D0E6412C2C0F86EF003B43CB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				D0E6412F2C0F895E003B43CB /* LisenceResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		D0E641312C0F8AFE003B43CB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				D0E641352C0F8B7C003B43CB /* MemberTokenResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		D0E641322C0F8B08003B43CB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				D0E641332C0F8B20003B43CB /* LoginTypeRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		D0E641372C104712003B43CB /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				D0E641322C0F8B08003B43CB /* Request */,
+				D0E641312C0F8AFE003B43CB /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,6 +550,7 @@
 			files = (
 				D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */,
 				D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */,
+				D0E641362C0F8B7C003B43CB /* MemberTokenResponseDTO.swift in Sources */,
 				D0B883232BEB81F400633FD8 /* FontLiterals.swift in Sources */,
 				D0B883172BEB76BF00633FD8 /* UILabel+.swift in Sources */,
 				D065F25E2BF39E2B0025DF0B /* WelcomeView.swift in Sources */,
@@ -484,12 +561,15 @@
 				D065F25B2BF29CEC0025DF0B /* LoginRetryViewController.swift in Sources */,
 				D0B8830E2BEB716300633FD8 /* UIButton+.swift in Sources */,
 				D0B883152BEB71F300633FD8 /* UIViewController+.swift in Sources */,
+				D0E6412E2C0F88A7003B43CB /* LisenceValidRequestDTO.swift in Sources */,
+				D0E641302C0F895E003B43CB /* LisenceResponseDTO.swift in Sources */,
 				D0B883112BEB71A700633FD8 /* UITextField+.swift in Sources */,
 				D065F2692BF3A4720025DF0B /* LicenseInfoModalView.swift in Sources */,
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
 				D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */,
+				D0E641342C0F8B20003B43CB /* LoginTypeRequestDTO.swift in Sources */,
 				D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */,
 				D065F26E2BF3C3EC0025DF0B /* EnterLicenseInfoView.swift in Sources */,
 				D0B882E22BEB645700633FD8 /* SceneDelegate.swift in Sources */,
