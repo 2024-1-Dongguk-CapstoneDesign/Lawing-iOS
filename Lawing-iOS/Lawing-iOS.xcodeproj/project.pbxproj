@@ -53,6 +53,7 @@
 		D0E641392C104834003B43CB /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E641382C104834003B43CB /* BaseService.swift */; };
 		D0E6413B2C10489F003B43CB /* MoyaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6413A2C10489F003B43CB /* MoyaPlugin.swift */; };
 		D0E6413E2C1048C4003B43CB /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6413D2C1048C4003B43CB /* NetworkResult.swift */; };
+		D0E641402C1049D9003B43CB /* MemberAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E6413F2C1049D9003B43CB /* MemberAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		D0E641382C104834003B43CB /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		D0E6413A2C10489F003B43CB /* MoyaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaPlugin.swift; sourceTree = "<group>"; };
 		D0E6413D2C1048C4003B43CB /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		D0E6413F2C1049D9003B43CB /* MemberAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E641372C104712003B43CB /* DTO */,
+				D0E6413F2C1049D9003B43CB /* MemberAPIService.swift */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				D0E641302C0F895E003B43CB /* LisenceResponseDTO.swift in Sources */,
 				D0B883112BEB71A700633FD8 /* UITextField+.swift in Sources */,
 				D065F2692BF3A4720025DF0B /* LicenseInfoModalView.swift in Sources */,
+				D0E641402C1049D9003B43CB /* MemberAPIService.swift in Sources */,
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
