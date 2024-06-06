@@ -1,5 +1,4 @@
 {
-  "originHash" : "6348be90e532d996a0a906908d8b597d4fddbbfc931ea660f100a59fa07c4686",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -22,7 +21,7 @@
     {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
         "revision" : "5b92f029fab2cce44386d28588098b5be0824ef5",
         "version" : "7.11.0"
@@ -74,5 +73,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

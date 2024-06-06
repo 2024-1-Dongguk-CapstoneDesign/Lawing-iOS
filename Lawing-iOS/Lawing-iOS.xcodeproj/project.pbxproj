@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
 		D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */; };
@@ -27,7 +28,6 @@
 		D0B882EC2BEB645900633FD8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D0B882EB2BEB645900633FD8 /* Base */; };
 		D0B882F52BEB6D3100633FD8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D0B882F42BEB6D3100633FD8 /* SnapKit */; };
 		D0B882F82BEB6D3D00633FD8 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D0B882F72BEB6D3D00633FD8 /* Then */; };
-		D0B882FB2BEB6D4600633FD8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0B882FA2BEB6D4600633FD8 /* Kingfisher */; };
 		D0B882FE2BEB6DB200633FD8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D0B882FD2BEB6DB200633FD8 /* Moya */; };
 		D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B883092BEB70ED00633FD8 /* UIView+.swift */; };
 		D0B8830C2BEB714A00633FD8 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B8830B2BEB714A00633FD8 /* UIStackView+.swift */; };
@@ -106,9 +106,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0B882FB2BEB6D4600633FD8 /* Kingfisher in Frameworks */,
 				D0B882F52BEB6D3100633FD8 /* SnapKit in Frameworks */,
 				D0B882FE2BEB6DB200633FD8 /* Moya in Frameworks */,
+				1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */,
 				D0E641222C0F5341003B43CB /* KakaoSDKUser in Frameworks */,
 				D0B882F82BEB6D3D00633FD8 /* Then in Frameworks */,
 				D0E641202C0F5341003B43CB /* KakaoSDKCommon in Frameworks */,
@@ -498,11 +498,11 @@
 			packageProductDependencies = (
 				D0B882F42BEB6D3100633FD8 /* SnapKit */,
 				D0B882F72BEB6D3D00633FD8 /* Then */,
-				D0B882FA2BEB6D4600633FD8 /* Kingfisher */,
 				D0B882FD2BEB6DB200633FD8 /* Moya */,
 				D0E6411D2C0F5341003B43CB /* KakaoSDKAuth */,
 				D0E6411F2C0F5341003B43CB /* KakaoSDKCommon */,
 				D0E641212C0F5341003B43CB /* KakaoSDKUser */,
+				1BA4C68F2C11A334008DB8F9 /* Kingfisher */,
 			);
 			productName = "Lawing-iOS";
 			productReference = D0B882DC2BEB645700633FD8 /* Lawing-iOS.app */;
@@ -535,9 +535,9 @@
 			packageReferences = (
 				D0B882F32BEB6D3000633FD8 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D0B882F62BEB6D3D00633FD8 /* XCRemoteSwiftPackageReference "Then" */,
-				D0B882F92BEB6D4600633FD8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				D0B882FC2BEB6DB200633FD8 /* XCRemoteSwiftPackageReference "Moya" */,
 				D0E6411C2C0F5341003B43CB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D0B882DD2BEB645700633FD8 /* Products */;
 			projectDirPath = "";
@@ -757,7 +757,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X395BM5WW7;
+				DEVELOPMENT_TEAM = 6ML57N96S3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lawing-iOS/Global/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "로그인을 위해서는 Face ID 활성화가 필요합니다.";
@@ -767,6 +767,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -788,7 +789,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X395BM5WW7;
+				DEVELOPMENT_TEAM = 6ML57N96S3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lawing-iOS/Global/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "로그인을 위해서는 Face ID 활성화가 필요합니다.";
@@ -798,6 +799,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -835,6 +837,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 		D0B882F32BEB6D3000633FD8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -849,14 +859,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.0;
-			};
-		};
-		D0B882F92BEB6D4600633FD8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
 			};
 		};
 		D0B882FC2BEB6DB200633FD8 /* XCRemoteSwiftPackageReference "Moya" */ = {
@@ -878,6 +880,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1BA4C68F2C11A334008DB8F9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		D0B882F42BEB6D3100633FD8 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D0B882F32BEB6D3000633FD8 /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -887,11 +894,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D0B882F62BEB6D3D00633FD8 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
-		};
-		D0B882FA2BEB6D4600633FD8 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D0B882F92BEB6D4600633FD8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		D0B882FD2BEB6DB200633FD8 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
