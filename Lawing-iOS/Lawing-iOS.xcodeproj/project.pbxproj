@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1D07F62C11AE2100EE991A /* lawingHelmet3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */; };
 		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lawingHelmet3.mlmodel; sourceTree = "<group>"; };
 		D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
 		D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1D07F42C11AE1B00EE991A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D03F075E2C070CA600B9DD83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +324,7 @@
 		D0B883022BEB6F0800633FD8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1B1D07F42C11AE1B00EE991A /* Model */,
 				D0B883182BEB810B00633FD8 /* Font */,
 				D0B882E82BEB645900633FD8 /* Assets.xcassets */,
 				D0B882E52BEB645700633FD8 /* Main.storyboard */,
@@ -582,6 +593,7 @@
 				D065F2622BF39E570025DF0B /* WelcomeViewController.swift in Sources */,
 				D065F2672BF3A45E0025DF0B /* LicenseInfoModalViewController.swift in Sources */,
 				D0E641392C104834003B43CB /* BaseService.swift in Sources */,
+				1B1D07F62C11AE2100EE991A /* lawingHelmet3.mlmodel in Sources */,
 				D0B8830C2BEB714A00633FD8 /* UIStackView+.swift in Sources */,
 				D065F25B2BF29CEC0025DF0B /* LoginRetryViewController.swift in Sources */,
 				D0B8830E2BEB716300633FD8 /* UIButton+.swift in Sources */,
