@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum BaseTargetType: TargetType {
-    case postLisenceOCR(imageData: Data, imageName: String)
+    case postLisenceOCR(imageData: Data)
     case postLisenceValid(request: LisenceValidRequestDTO)
     case postMemberSocialLogin(kakaoAccessToken: String, request: LoginTypeRequestDTO)
 }
@@ -26,8 +26,8 @@ extension BaseTargetType {
     
     var path: String {
         switch self {
-        case .postLisenceOCR(_, let imageName):
-            return "license/\(imageName)"
+        case .postLisenceOCR:
+            return "license"
         case .postLisenceValid:
             return "license/valid"
         case .postMemberSocialLogin:
@@ -44,8 +44,8 @@ extension BaseTargetType {
     
     var task: Moya.Task {
         switch self {
-        case .postLisenceOCR(let imageData, _):
-            return .uploadMultipart([MultipartFormData(provider: .data(imageData), name: "image")])
+        case .postLisenceOCR(let imageData):
+            return .uploadMultipart([MultipartFormData(provider: .data(imageData), name: "multipartFile", fileName: "image.jpg", mimeType: "image/jpeg")])
         case .postLisenceValid(let lisenceVaildRequestDTO):
             return .requestJSONEncodable(lisenceVaildRequestDTO)
         case .postMemberSocialLogin(_, let loginTyoeRequestDTO):
@@ -55,12 +55,16 @@ extension BaseTargetType {
     }
     
     var headers: [String : String]? {
+        guard let accessToken = UserDefaults.standard.string(forKey: "AccessToken") else { return [:] }
+        
         switch self {
         case .postMemberSocialLogin(let kakaoAccessToken, _):
             return ["Content-Type": "application/json",
                     "kakaoAccessToken": kakaoAccessToken]
-        case .postLisenceOCR, .postLisenceValid:
-            guard let accessToken = UserDefaults.standard.string(forKey: "AccessToken") else { return [:] }
+        case .postLisenceOCR:
+            return ["Content-Type": "multipart/form-data",
+                    "Authorization": "Bearer \(accessToken)"]
+        case .postLisenceValid:
             return ["Content-Type": "application/json",
                     "Authorization": "Bearer \(accessToken)"]
         }
