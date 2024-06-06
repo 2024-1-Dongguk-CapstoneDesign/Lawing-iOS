@@ -29,13 +29,13 @@ final class EnterLicenseInfoView: UIView {
     let regionTextField = UITextField()
     private let showPickerButton = UIButton()
     let regionPickerView = UIPickerView()
-    private let licenseNumberTextField = UITextField()
+    let licenseNumberTextField = UITextField()
     private let nameLabel = UILabel()
-    private let nameTextField = UITextField()
+    let nameTextField = UITextField()
     private let serialNumberLabel = UILabel()
-    private let serialNumberTextField = UITextField()
+    let serialNumberTextField = UITextField()
     private let socialSecurityNumberLabel = UILabel()
-    private let socialSecurityNumberFirstTextField = UITextField()
+    let socialSecurityNumberFirstTextField = UITextField()
     private let socialSecurityNumberSecondTextField = UITextField()
     private let circleStackView = UIStackView()
     private let cameraButton = UIButton()
@@ -148,8 +148,8 @@ extension EnterLicenseInfoView {
         
         regionTextField.do {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
-            $0.setPlaceholder(placeholder: "지역", fontColor: .lawingGray1, font: .caption2Medium)
-            $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
+            $0.setPlaceholder(placeholder: "지역", fontColor: .lawingGray1, font: .caption3Medium)
+            $0.setTextFont(forFont: .caption3Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
             $0.tag = 0
             
@@ -159,12 +159,10 @@ extension EnterLicenseInfoView {
             $0.rightView = rightView
         }
         
-        
-        
         licenseNumberTextField.do {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
-            $0.setPlaceholder(placeholder: "운전면허번호 10자리", fontColor: .lawingGray1, font: .caption2Medium)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
+            $0.setPlaceholder(placeholder: "면허 번호 10자리", fontColor: .lawingGray1, font: .caption3Medium)
             $0.addPadding(left: 8)
             $0.tag = 1
         }
@@ -215,6 +213,7 @@ extension EnterLicenseInfoView {
             $0.setUnderline(forBackGroundColor: .lawingWhite, forUnderLineColor: .lawingGray1, forWidth: 2)
             $0.setTextFont(forFont: .caption2Medium, forFontColor: .lawingBlack)
             $0.addPadding(left: 8)
+            $0.tag = 5
         }
         
         for textField in [licenseNumberTextField, nameTextField, serialNumberTextField, socialSecurityNumberFirstTextField] {
@@ -296,14 +295,14 @@ extension EnterLicenseInfoView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(39)
             $0.leading.equalToSuperview().inset(26)
             $0.height.equalTo(41)
-            $0.width.equalTo(136)
+            $0.width.equalTo(180)
         }
         
         licenseNumberTextField.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(39)
-            $0.leading.equalTo(regionTextField.snp.trailing).offset(24)
+            $0.trailing.equalToSuperview().inset(26)
             $0.height.equalTo(41)
-            $0.width.equalTo(181)
+            $0.width.equalTo(140)
         }
         
         nameLabel.snp.makeConstraints {
@@ -315,19 +314,19 @@ extension EnterLicenseInfoView {
             $0.top.equalTo(nameLabel.snp.bottom).offset(7)
             $0.leading.equalToSuperview().inset(26)
             $0.height.equalTo(41)
-            $0.width.equalTo(148)
+            $0.width.equalTo(150)
         }
         
         serialNumberLabel.snp.makeConstraints {
             $0.top.equalTo(regionTextField.snp.bottom).offset(50)
-            $0.leading.equalTo(nameTextField.snp.trailing).offset(31)
+            $0.leading.equalTo(serialNumberTextField)
         }
         
         serialNumberTextField.snp.makeConstraints {
             $0.top.equalTo(nameLabel.snp.bottom).offset(7)
-            $0.leading.equalTo(nameTextField.snp.trailing).offset(31)
+            $0.trailing.equalToSuperview().inset(26)
             $0.height.equalTo(41)
-            $0.width.equalTo(162)
+            $0.width.equalTo(160)
         }
         
         socialSecurityNumberLabel.snp.makeConstraints {
@@ -339,7 +338,7 @@ extension EnterLicenseInfoView {
             $0.top.equalTo(socialSecurityNumberLabel.snp.bottom).offset(7)
             $0.leading.equalToSuperview().inset(26)
             $0.height.equalTo(41)
-            $0.width.equalTo(148)
+            $0.width.equalTo(150)
         }
         
         socialSecurityNumberSecondTextField.snp.makeConstraints {
