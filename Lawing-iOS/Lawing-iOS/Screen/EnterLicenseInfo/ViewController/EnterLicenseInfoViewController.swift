@@ -12,8 +12,8 @@ final class EnterLicenseInfoViewController: UIViewController {
     //MARK: - Properties
     
     private let rootView = EnterLicenseInfoView()
-    
-    private let regionData: [String] = RegionModel.fetchDummyForText()
+    private let regionData: [RegionModel] = RegionModel.dummy()
+    private let regionText: [String] = RegionModel.fetchDummyForText()
     
     // MARK: - Life Cycle
     
@@ -26,6 +26,7 @@ final class EnterLicenseInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
+        hideKeyboard(forDelegate: self)
         
         setupDelegate()
         setupTarget()
@@ -48,6 +49,36 @@ extension EnterLicenseInfoViewController {
         rootView.setPickerViewDelegate(self)
     }
     
+    private func postLiseceValid() {
+        let licenseNumber = rootView.licenseNumberTextField.text ?? ""
+        let licenseNo01Text = regionData[self.rootView.regionPickerView.selectedRow(inComponent: 0)].regionNumber
+        let licenseNo02Text: String
+        let licenseNo03Text: String
+        let licenseNo04Text: String
+        let biethDateText = rootView.socialSecurityNumberFirstTextField.text ?? ""
+        let serialNumber = rootView.serialNumberTextField.text ?? ""
+        let nameText = rootView.nameTextField.text ?? ""
+
+        let firstRange = licenseNumber.startIndex..<licenseNumber.index(licenseNumber.startIndex, offsetBy: 2)
+        let secondRange = licenseNumber.index(licenseNumber.startIndex, offsetBy: 2)..<licenseNumber.index(licenseNumber.startIndex, offsetBy: 8)
+        let thirdRange = licenseNumber.index(licenseNumber.startIndex, offsetBy: 8)..<licenseNumber.endIndex
+        
+        licenseNo02Text = String(licenseNumber[firstRange])
+        licenseNo03Text = String(licenseNumber[secondRange])
+        licenseNo04Text = String(licenseNumber[thirdRange])
+        
+        let request = LisenceValidRequestDTO(birthDate: biethDateText, licenseNo01: licenseNo01Text, licenseNo02: licenseNo02Text, licenseNo03: licenseNo03Text, licenseNo04: licenseNo04Text, serialNo: serialNumber, userName: nameText)
+        
+        LicenseAPIService.shared.postLisenceValid(request: request) { response in
+            switch response {
+            case .success(let data):
+                print("아아아아아아아")
+            default:
+                break
+            }
+        }
+    }
+    
     private func showPickerButtonTapped() {
         print("showPickerButtonTapped")
         
@@ -55,9 +86,8 @@ extension EnterLicenseInfoViewController {
         alert.view.addSubview(rootView.regionPickerView)
         rootView.regionPickerView.frame = CGRect(x: 0, y: 0, width: alert.view.bounds.width, height: 180.0)
         
-        
         let doneAction = UIAlertAction(title: "선택", style: .default) { (action) in
-            let selectedValue = self.regionData[self.rootView.regionPickerView.selectedRow(inComponent: 0)]
+            let selectedValue = self.regionText[self.rootView.regionPickerView.selectedRow(inComponent: 0)]
             self.rootView.regionTextField.text = selectedValue
         }
         alert.addAction(doneAction)
@@ -68,13 +98,13 @@ extension EnterLicenseInfoViewController {
     private func clearButtonTapped(_ button: UIButton) {
         switch button.tag {
         case 1:
-            rootView.setTextFieldInitialState(textFieldTag: 0)
-        case 2:
             rootView.setTextFieldInitialState(textFieldTag: 1)
-        case 3:
+        case 2:
             rootView.setTextFieldInitialState(textFieldTag: 2)
-        case 4:
+        case 3:
             rootView.setTextFieldInitialState(textFieldTag: 3)
+        case 4:
+            rootView.setTextFieldInitialState(textFieldTag: 4)
         default:
             return
         }
@@ -86,10 +116,19 @@ extension EnterLicenseInfoViewController {
 
     private func registerLicenseButtonTapped() {
         print("registerLicenseButtonTapped")
+        postLiseceValid()
     }
 }
 
 extension EnterLicenseInfoViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.shadowColor = UIColor.lawingGray3.cgColor
@@ -126,14 +165,23 @@ extension EnterLicenseInfoViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return regionData.count
+        return regionText.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return regionData[row]
+        return regionText[row]
     }
 }
 
 extension EnterLicenseInfoViewController: UIPickerViewDataSource {
     
+}
+
+extension EnterLicenseInfoViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view is UIButton {
+            return false
+        }
+        return true
+    }
 }

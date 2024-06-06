@@ -27,9 +27,9 @@ extension BaseTargetType {
     var path: String {
         switch self {
         case .postLisenceOCR(_, let imageName):
-            return "/lisence/\(imageName)"
+            return "license/\(imageName)"
         case .postLisenceValid:
-            return "/lisence/valid"
+            return "license/valid"
         case .postMemberSocialLogin:
             return "member/social/login"
         }
