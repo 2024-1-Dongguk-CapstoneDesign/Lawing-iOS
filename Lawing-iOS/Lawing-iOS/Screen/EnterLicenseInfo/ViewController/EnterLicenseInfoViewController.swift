@@ -79,6 +79,29 @@ extension EnterLicenseInfoViewController {
         }
     }
     
+    private func postLisenceOCR(imageData: Data) {
+        LicenseAPIService.shared.postLisenceOCR(imageData: imageData) { response in
+            switch response {
+            case .success(let data):
+                print("아아아아아아아")
+            default:
+                break
+            }
+        }
+    }
+    
+    private func takePhoto() {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera
+                imagePicker.allowsEditing = false
+                present(imagePicker, animated: true, completion: nil)
+            } else {
+                print("카메라 사용 불가능")
+            }
+        }
+    
     private func showPickerButtonTapped() {
         print("showPickerButtonTapped")
         
@@ -112,6 +135,7 @@ extension EnterLicenseInfoViewController {
     
     private func cameraButtonTapped() {
         print("cameraButtonTapped")
+        takePhoto()
     }
 
     private func registerLicenseButtonTapped() {
@@ -183,5 +207,17 @@ extension EnterLicenseInfoViewController: UIGestureRecognizerDelegate {
             return false
         }
         return true
+    }
+}
+
+extension EnterLicenseInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else {
+            return
+        }
+        if let imageData = image.jpegData(compressionQuality: 1.0, maxSize: 512_000) {
+            postLisenceOCR(imageData: imageData)
+        }
     }
 }
