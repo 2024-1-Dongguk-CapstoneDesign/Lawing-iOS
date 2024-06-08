@@ -331,7 +331,7 @@
 			children = (
 				D0B882E32BEB645700633FD8 /* ViewController.swift */,
 				D0B883062BEB702B00633FD8 /* Login */,
-				D0B883072BEB703400633FD8 /* Join */,
+				D065F25C2BF39D980025DF0B /* Welcome */,
 				D065F2632BF3A4220025DF0B /* LicenseInfoModal */,
 				D065F26A2BF3C3B70025DF0B /* EnterLicenseInfo */,
 				D0B883082BEB704600633FD8 /* Main */,
@@ -368,14 +368,6 @@
 				D065F2552BF29C7E0025DF0B /* LoginRetry */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		D0B883072BEB703400633FD8 /* Join */ = {
-			isa = PBXGroup;
-			children = (
-				D065F25C2BF39D980025DF0B /* Welcome */,
-			);
-			path = Join;
 			sourceTree = "<group>";
 		};
 		D0B883082BEB704600633FD8 /* Main */ = {
