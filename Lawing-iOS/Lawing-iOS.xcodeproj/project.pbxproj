@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1B1D07F62C11AE2100EE991A /* lawingHelmet3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */; };
+		1B1D07F92C11B12100EE991A /* VelocityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07F82C11B12100EE991A /* VelocityView.swift */; };
+		1B1D07FB2C11B20000EE991A /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FA2C11B20000EE991A /* CheckView.swift */; };
+		1B1D07FD2C11B25200EE991A /* RideEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FC2C11B25200EE991A /* RideEndView.swift */; };
+		1B1D07FF2C11B2BB00EE991A /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FE2C11B2BB00EE991A /* RetryView.swift */; };
+		1B2E2C562C15C6660052003D /* BeforeStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C552C15C6660052003D /* BeforeStartView.swift */; };
 		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
@@ -59,6 +64,11 @@
 
 /* Begin PBXFileReference section */
 		1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lawingHelmet3.mlmodel; sourceTree = "<group>"; };
+		1B1D07F82C11B12100EE991A /* VelocityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelocityView.swift; sourceTree = "<group>"; };
+		1B1D07FA2C11B20000EE991A /* CheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		1B1D07FC2C11B25200EE991A /* RideEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideEndView.swift; sourceTree = "<group>"; };
+		1B1D07FE2C11B2BB00EE991A /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
+		1B2E2C552C15C6660052003D /* BeforeStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeStartView.swift; sourceTree = "<group>"; };
 		D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
 		D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +137,18 @@
 				1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1B1D07F72C11B11400EE991A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B1D07FA2C11B20000EE991A /* CheckView.swift */,
+				1B1D07F82C11B12100EE991A /* VelocityView.swift */,
+				1B1D07FC2C11B25200EE991A /* RideEndView.swift */,
+				1B1D07FE2C11B2BB00EE991A /* RetryView.swift */,
+				1B2E2C552C15C6660052003D /* BeforeStartView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D03F075E2C070CA600B9DD83 /* Model */ = {
@@ -387,6 +409,7 @@
 		D0B883082BEB704600633FD8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1B1D07F72C11B11400EE991A /* View */,
 				D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -588,6 +611,7 @@
 				D0E641362C0F8B7C003B43CB /* MemberTokenResponseDTO.swift in Sources */,
 				D0B883232BEB81F400633FD8 /* FontLiterals.swift in Sources */,
 				D0B883172BEB76BF00633FD8 /* UILabel+.swift in Sources */,
+				1B1D07FD2C11B25200EE991A /* RideEndView.swift in Sources */,
 				D065F25E2BF39E2B0025DF0B /* WelcomeView.swift in Sources */,
 				D065F2592BF29CDD0025DF0B /* LoginRetryView.swift in Sources */,
 				D065F2622BF39E570025DF0B /* WelcomeViewController.swift in Sources */,
@@ -596,6 +620,7 @@
 				1B1D07F62C11AE2100EE991A /* lawingHelmet3.mlmodel in Sources */,
 				D0B8830C2BEB714A00633FD8 /* UIStackView+.swift in Sources */,
 				D065F25B2BF29CEC0025DF0B /* LoginRetryViewController.swift in Sources */,
+				1B1D07FF2C11B2BB00EE991A /* RetryView.swift in Sources */,
 				D0B8830E2BEB716300633FD8 /* UIButton+.swift in Sources */,
 				D0E641292C0F8645003B43CB /* BaseTargetType.swift in Sources */,
 				D0B883152BEB71F300633FD8 /* UIViewController+.swift in Sources */,
@@ -607,6 +632,7 @@
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
+				1B1D07F92C11B12100EE991A /* VelocityView.swift in Sources */,
 				D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */,
 				D0E6413E2C1048C4003B43CB /* NetworkResult.swift in Sources */,
 				D0E641342C0F8B20003B43CB /* LoginTypeRequestDTO.swift in Sources */,
@@ -615,6 +641,8 @@
 				D0B882E22BEB645700633FD8 /* SceneDelegate.swift in Sources */,
 				D065F2702BF3C3FC0025DF0B /* EnterLicenseInfoViewController.swift in Sources */,
 				D0B883252BEB91B900633FD8 /* ColorLiterals.swift in Sources */,
+				1B2E2C562C15C6660052003D /* BeforeStartView.swift in Sources */,
+				1B1D07FB2C11B20000EE991A /* CheckView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

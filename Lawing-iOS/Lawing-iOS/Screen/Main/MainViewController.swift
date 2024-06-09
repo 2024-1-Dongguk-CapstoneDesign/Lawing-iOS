@@ -21,6 +21,11 @@ enum DetectHelmet: String {
 
 final class MainViewController: UIViewController {
     
+    // MARK: - UI Property
+
+    private let velocityView: VelocityView = VelocityView()
+    private let beforeStartView: BeforeStartView = BeforeStartView()
+    
     // MARK: - location Property
     
     let locationManager = CLLocationManager()
@@ -55,6 +60,7 @@ final class MainViewController: UIViewController {
         setupLocationManager()
         setupCaptureDevice()
         setupCaptureSession()
+        setupStyle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -313,10 +319,24 @@ private extension MainViewController {
         previewLayer.frame = UIScreen.main.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
-//        setupLayout()
+        setupLayout()
         
         // captureSession의 변경사항을 적용(커밋)하는 코드
         captureSession.commitConfiguration()
+    }
+}
+
+private extension MainViewController {
+    func setupStyle() {
+        
+    }
+    
+    func setupLayout() {
+        view.addSubview(beforeStartView)
+        
+        beforeStartView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -325,7 +345,8 @@ extension MainViewController: CLLocationManagerDelegate {
         guard let currentLocation = locations.last else { return }
         let currentSpeed = currentLocation.speed
         
-        print("Current Speed: \(currentSpeed) m/s")
+        print("Current Speed: \(currentSpeed * 3.6) m/s")
+        velocityView.bindView(velocity: currentSpeed * 3.6)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
