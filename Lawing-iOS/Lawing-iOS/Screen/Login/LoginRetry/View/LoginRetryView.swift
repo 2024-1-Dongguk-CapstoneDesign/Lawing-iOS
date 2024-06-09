@@ -53,7 +53,7 @@ extension LoginRetryView {
     private func setupStyle() {
         self.backgroundColor = .lawingWhite
         
-        logoImageView.backgroundColor = .lightGray
+        logoImageView.image = .lawingLogo
         
         titleLabel.do {
             $0.text = "로잉을 이용하기 위해서는\n인증이 필요합니다!"
@@ -83,7 +83,6 @@ extension LoginRetryView {
         logoImageView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).inset(180)
             $0.centerX.equalToSuperview()
-            $0.height.width.equalTo(149)
         }
         
         titleLabel.snp.makeConstraints {
