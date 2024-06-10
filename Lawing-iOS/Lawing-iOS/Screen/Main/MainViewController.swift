@@ -19,12 +19,25 @@ enum DetectHelmet: String {
     case error
 }
 
+enum MainViewState {
+    case before
+    case start
+}
+
 final class MainViewController: UIViewController {
+    
+    var viewState: MainViewState = .before {
+        didSet {
+            if viewState == .start {
+                setupStart()
+            }
+        }
+    }
     
     // MARK: - UI Property
 
-    private let velocityView: VelocityView = VelocityView()
     private let beforeStartView: BeforeStartView = BeforeStartView()
+    private let drivingView: DrivingView = DrivingView()
     
     // MARK: - location Property
     
@@ -61,6 +74,7 @@ final class MainViewController: UIViewController {
         setupCaptureDevice()
         setupCaptureSession()
         setupStyle()
+        setupBefore()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +88,18 @@ final class MainViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         stopSession()
+    }
+}
+
+private extension MainViewController {
+    func setupBefore() {
+        beforeStartView.isHidden = false
+        drivingView.isHidden = true
+    }
+    
+    func setupStart() {
+        beforeStartView.isHidden = true
+        drivingView.isHidden = false
     }
 }
 
@@ -332,9 +358,14 @@ private extension MainViewController {
     }
     
     func setupLayout() {
-        view.addSubview(beforeStartView)
+        view.addSubview(beforeStartView,
+                        drivingView)
         
         beforeStartView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        drivingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
@@ -346,7 +377,7 @@ extension MainViewController: CLLocationManagerDelegate {
         let currentSpeed = currentLocation.speed
         
         print("Current Speed: \(currentSpeed * 3.6) m/s")
-        velocityView.bindView(velocity: currentSpeed * 3.6)
+        drivingView.velocityView.bindView(velocity: currentSpeed * 3.6)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -365,5 +396,27 @@ extension MainViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         detectFace(image: frame)
+    }
+}
+
+extension MainViewController {
+    /// true가 다중 감지
+    func detectMultiface(detectResult: [Int]) -> Bool {
+        let count = detectResult.count
+        if CGFloat(detectResult.filter { $0 > 1 }.count) / CGFloat(count) > 0.1 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    /// true가 헬멧쓴 것
+    func detectHelmet(detectResult: [DetectHelmet]) -> Bool {
+        if detectResult.filter({ $0 == .helmet }).count >=
+            detectResult.filter({ $0 != .helmet }).count {
+            return true
+        } else {
+            return false
+        }
     }
 }

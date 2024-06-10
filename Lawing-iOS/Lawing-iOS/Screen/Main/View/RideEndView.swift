@@ -22,13 +22,20 @@ enum RideEndType {
 }
 
 final class RideEndView: UIView {
-
+    
     private let viewType: RideEndType
     
     private let stackView: UIStackView = UIStackView()
     private let warningImageView: UIImageView = UIImageView(image: .warning)
     private let warningLabel: UILabel = UILabel()
     private let timerLabel: UILabel = UILabel()
+    
+    var timer: Timer?
+    var secondsRemaining = 20 {
+        didSet {
+            timerLabel.text = "\(secondsRemaining)"
+        }
+    }
     
     init(frame: CGRect, type: RideEndType) {
         viewType = type
@@ -44,8 +51,22 @@ final class RideEndView: UIView {
 }
 
 extension RideEndView {
-    func bindView() {
+    func startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self, selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
         
+    }
+    
+    @objc func updateTimer() {
+        if secondsRemaining > 0 {
+            secondsRemaining -= 1
+        } else {
+            timer?.invalidate()
+            secondsRemaining = 0
+        }
     }
 }
 
@@ -67,6 +88,7 @@ private extension RideEndView {
         }
         
         timerLabel.do {
+            $0.text = "20"
             $0.font = .head1ExtraBold
             $0.textColor = .black
         }

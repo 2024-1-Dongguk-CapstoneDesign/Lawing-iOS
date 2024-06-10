@@ -13,6 +13,7 @@
 		1B1D07FD2C11B25200EE991A /* RideEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FC2C11B25200EE991A /* RideEndView.swift */; };
 		1B1D07FF2C11B2BB00EE991A /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FE2C11B2BB00EE991A /* RetryView.swift */; };
 		1B2E2C562C15C6660052003D /* BeforeStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C552C15C6660052003D /* BeforeStartView.swift */; };
+		1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C572C15D7540052003D /* DrivingView.swift */; };
 		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
@@ -69,6 +70,7 @@
 		1B1D07FC2C11B25200EE991A /* RideEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideEndView.swift; sourceTree = "<group>"; };
 		1B1D07FE2C11B2BB00EE991A /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
 		1B2E2C552C15C6660052003D /* BeforeStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeStartView.swift; sourceTree = "<group>"; };
+		1B2E2C572C15D7540052003D /* DrivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingView.swift; sourceTree = "<group>"; };
 		D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
 		D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				1B1D07FC2C11B25200EE991A /* RideEndView.swift */,
 				1B1D07FE2C11B2BB00EE991A /* RetryView.swift */,
 				1B2E2C552C15C6660052003D /* BeforeStartView.swift */,
+				1B2E2C572C15D7540052003D /* DrivingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				D0B883112BEB71A700633FD8 /* UITextField+.swift in Sources */,
 				D065F2692BF3A4720025DF0B /* LicenseInfoModalView.swift in Sources */,
 				D0E641402C1049D9003B43CB /* MemberAPIService.swift in Sources */,
+				1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */,
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
