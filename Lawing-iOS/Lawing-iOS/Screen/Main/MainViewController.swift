@@ -11,6 +11,9 @@ import CoreLocation
 import CoreML
 import Vision
 
+import RxCocoa
+import RxRelay
+import RxSwift
 import SnapKit
 
 enum DetectHelmet: String {
@@ -26,6 +29,9 @@ enum MainViewState {
 
 final class MainViewController: UIViewController {
     
+    var disposeBag: DisposeBag = DisposeBag()
+    var detectDisposeBag: DisposeBag = DisposeBag()
+    
     var viewState: MainViewState = .before {
         didSet {
             if viewState == .start {
@@ -33,6 +39,7 @@ final class MainViewController: UIViewController {
             }
         }
     }
+    var faceDetectResult: BehaviorRelay<[Int]> = BehaviorRelay(value: [])
     
     // MARK: - UI Property
 
@@ -74,7 +81,8 @@ final class MainViewController: UIViewController {
         setupCaptureDevice()
         setupCaptureSession()
         setupStyle()
-        setupBefore()
+        setupBeforeView()
+        setupBeforeMultiface()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,9 +100,48 @@ final class MainViewController: UIViewController {
 }
 
 private extension MainViewController {
-    func setupBefore() {
+    
+    func setupBeforeView() {
+        beforeStartView.retryHelmetView.retryButton
+            .rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.setupBeforeHelmet()
+            }).disposed(by: disposeBag)
+        
+        beforeStartView.retryMultiFaceView.retryButton
+            .rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc, _ in
+                vc.faceDetectResult.accept([])
+                vc.setupBeforeMultiface()
+            }).disposed(by: disposeBag)
+    }
+    
+    func setupBeforeMultiface() {
+        var detectMultiFace: Bool = false
+
         beforeStartView.isHidden = false
         drivingView.isHidden = true
+        
+        beforeStartView.setupMultiFace()
+        faceDetectResult
+            .withUnretained(self)
+            .subscribe(onNext: { vc, result in
+                print(result.count)
+                if result.count >= 100 {
+                    detectMultiFace = vc.detectMultiface(detectResult: result)
+                    vc.beforeStartView.resultDetectMultiFace(isCorrect: !detectMultiFace)
+                    if !detectMultiFace {
+                        vc.setupBeforeHelmet()
+                        vc.detectDisposeBag = DisposeBag()
+                    }
+                }
+        }).disposed(by: detectDisposeBag)
+    }
+    
+    func setupBeforeHelmet() {
+        
     }
     
     func setupStart() {
@@ -160,6 +207,12 @@ private extension MainViewController {
                 guard let self else { return }
                 if let results = vnRequest.results as? [VNFaceObservation], results.count > 0 {
                     self.handleFaceDetectionResults(observedFaces: results, pixelBuffer: image)
+                    var tempResult = self.faceDetectResult.value
+                    if tempResult.count >= 100 {
+                        tempResult.removeFirst()
+                    }
+                    tempResult.append(results.count)
+                    self.faceDetectResult.accept(tempResult)
                 }
             }
         }
@@ -358,7 +411,7 @@ private extension MainViewController {
     }
     
     func setupLayout() {
-        view.addSubview(beforeStartView,
+        view.addSubviews(beforeStartView,
                         drivingView)
         
         beforeStartView.snp.makeConstraints {

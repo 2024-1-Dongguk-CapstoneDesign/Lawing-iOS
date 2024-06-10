@@ -40,11 +40,13 @@ extension BeforeStartView {
     func setupMultiFace() {
         stateLabel.isHidden = false
         stateLabel.text = "탑승 인원을 확인 중입니다..."
+        retryMultiFaceView.isHidden = true
     }
     
     func setupHelmet() {
         stateLabel.isHidden = false
         stateLabel.text = "헬멧 착용 여부를 확인 중입니다..."
+        retryHelmetView.isHidden = true
     }
     
     func resultDetectMultiFace(isCorrect: Bool) {

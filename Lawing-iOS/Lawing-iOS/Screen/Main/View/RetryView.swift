@@ -26,7 +26,7 @@ final class RetryView: UIView {
     private let stackView: UIStackView = UIStackView()
     private let warningImageView: UIImageView = UIImageView(image: .warning)
     private let warningLabel: UILabel = UILabel()
-    private let retryButton: UIButton = UIButton()
+    let retryButton: UIButton = UIButton()
     
     init(frame: CGRect, type: RetryType) {
         viewType = type
@@ -60,14 +60,14 @@ private extension RetryView {
         
         warningLabel.do {
             $0.text = viewType.title
-            $0.font = .caption1Bold
+            $0.font = .caption2SemiBold
             $0.textColor = .black
         }
         
         retryButton.do {
             $0.setTitle("다시 시도하기", for: .normal)
             $0.setTitleColor(.lawingGray2, for: .normal)
-            $0.titleLabel?.font = .caption2SemiBold
+            $0.titleLabel?.font = .caption3SemiBold
             $0.titleLabel?.underLineText(forText: "다시 시도하기")
         }
     }

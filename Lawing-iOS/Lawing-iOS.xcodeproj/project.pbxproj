@@ -14,6 +14,10 @@
 		1B1D07FF2C11B2BB00EE991A /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FE2C11B2BB00EE991A /* RetryView.swift */; };
 		1B2E2C562C15C6660052003D /* BeforeStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C552C15C6660052003D /* BeforeStartView.swift */; };
 		1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C572C15D7540052003D /* DrivingView.swift */; };
+		1B2E2C6F2C17554F0052003D /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C6E2C17554F0052003D /* RxBlocking */; };
+		1B2E2C712C17554F0052003D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C702C17554F0052003D /* RxCocoa */; };
+		1B2E2C732C17554F0052003D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C722C17554F0052003D /* RxRelay */; };
+		1B2E2C752C17554F0052003D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C742C17554F0052003D /* RxSwift */; };
 		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
@@ -120,13 +124,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2E2C732C17554F0052003D /* RxRelay in Frameworks */,
+				1B2E2C712C17554F0052003D /* RxCocoa in Frameworks */,
 				D0B882F52BEB6D3100633FD8 /* SnapKit in Frameworks */,
 				D0B882FE2BEB6DB200633FD8 /* Moya in Frameworks */,
 				1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */,
 				D0E641222C0F5341003B43CB /* KakaoSDKUser in Frameworks */,
 				D0B882F82BEB6D3D00633FD8 /* Then in Frameworks */,
+				1B2E2C6F2C17554F0052003D /* RxBlocking in Frameworks */,
 				D0E641202C0F5341003B43CB /* KakaoSDKCommon in Frameworks */,
 				D0E6411E2C0F5341003B43CB /* KakaoSDKAuth in Frameworks */,
+				1B2E2C752C17554F0052003D /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +548,10 @@
 				D0E6411F2C0F5341003B43CB /* KakaoSDKCommon */,
 				D0E641212C0F5341003B43CB /* KakaoSDKUser */,
 				1BA4C68F2C11A334008DB8F9 /* Kingfisher */,
+				1B2E2C6E2C17554F0052003D /* RxBlocking */,
+				1B2E2C702C17554F0052003D /* RxCocoa */,
+				1B2E2C722C17554F0052003D /* RxRelay */,
+				1B2E2C742C17554F0052003D /* RxSwift */,
 			);
 			productName = "Lawing-iOS";
 			productReference = D0B882DC2BEB645700633FD8 /* Lawing-iOS.app */;
@@ -575,6 +587,7 @@
 				D0B882FC2BEB6DB200633FD8 /* XCRemoteSwiftPackageReference "Moya" */,
 				D0E6411C2C0F5341003B43CB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = D0B882DD2BEB645700633FD8 /* Products */;
 			projectDirPath = "";
@@ -881,6 +894,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
 		1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -924,6 +945,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1B2E2C6E2C17554F0052003D /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		1B2E2C702C17554F0052003D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		1B2E2C722C17554F0052003D /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		1B2E2C742C17554F0052003D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		1BA4C68F2C11A334008DB8F9 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
