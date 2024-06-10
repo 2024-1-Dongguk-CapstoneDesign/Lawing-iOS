@@ -83,8 +83,10 @@ private extension RideEndView {
         
         warningLabel.do {
             $0.text = "\(viewType.title)\n20초 후 패널티가 부과됩니다."
-            $0.font = .caption1Bold
+            $0.font = .caption2SemiBold
             $0.textColor = .black
+            $0.numberOfLines = 0
+            $0.textAlignment = .center
         }
         
         timerLabel.do {

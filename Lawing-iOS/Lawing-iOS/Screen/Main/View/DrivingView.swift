@@ -50,7 +50,7 @@ extension DrivingView {
 
 private extension DrivingView {
     func setupStyle() {
-        backgroundColor = .lawingBlack.withAlphaComponent(0.7)
+        backgroundColor = .lawingBlack.withAlphaComponent(0.5)
         
         multiFaceWarningView.isHidden = true
         helmetWarningView.isHidden = true
@@ -74,14 +74,14 @@ private extension DrivingView {
             $0.snp.makeConstraints {
                 $0.height.equalTo(210)
                 $0.horizontalEdges.equalToSuperview().inset(18)
-                $0.bottom.equalTo(velocityView.snp.top).inset(20)
+                $0.bottom.equalTo(velocityView.snp.top).offset(-20)
             }
         }
         
         velocityWarningView.snp.makeConstraints {
             $0.height.equalTo(180)
             $0.horizontalEdges.equalToSuperview().inset(18)
-            $0.bottom.equalTo(velocityView.snp.top).inset(20)
+            $0.bottom.equalTo(velocityView.snp.top).offset(-20)
         }
     }
 }

@@ -180,6 +180,7 @@ private extension MainViewController {
                         vc.detectDisposeBag = DisposeBag()
                         vc.beforeStartView.correctAllState()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            vc.helmetDetectResult.accept([])
                             vc.setupStart()
                         }
                     }
@@ -201,25 +202,25 @@ private extension MainViewController {
                     detectMultiFace = vc.detectMultiface(detectResult: result)
                     if detectMultiFace {
                         vc.drivingView.multiFaceWarningView.isHidden = false
-                        vc.drivingView.helmetWarningView.isHidden = false
-                        vc.drivingView.velocityView.isHidden = true
+                        vc.drivingView.helmetWarningView.isHidden = true
+                        vc.drivingView.velocityWarningView.isHidden = true
                     } else {
                         let helmetResult = vc.helmetDetectResult.value
                         detectHelmet = vc.detectHelmet(detectResult: helmetResult)
                         if !detectHelmet {
                             vc.drivingView.multiFaceWarningView.isHidden = true
                             vc.drivingView.helmetWarningView.isHidden = false
-                            vc.drivingView.velocityView.isHidden = true
+                            vc.drivingView.velocityWarningView.isHidden = true
                         } else {
                             let velocity = vc.velocity
                             if velocity > 25 {
                                 vc.drivingView.multiFaceWarningView.isHidden = true
                                 vc.drivingView.helmetWarningView.isHidden = true
-                                vc.drivingView.velocityView.isHidden = false
+                                vc.drivingView.velocityWarningView.isHidden = false
                             } else {
                                 vc.drivingView.multiFaceWarningView.isHidden = true
                                 vc.drivingView.helmetWarningView.isHidden = true
-                                vc.drivingView.velocityView.isHidden = true
+                                vc.drivingView.velocityWarningView.isHidden = true
                             }
                         }
                     }
