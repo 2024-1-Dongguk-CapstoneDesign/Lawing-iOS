@@ -41,11 +41,13 @@ final class MainViewController: UIViewController {
     }
     var faceDetectResult: BehaviorRelay<[Int]> = BehaviorRelay(value: [])
     var helmetDetectResult: BehaviorRelay<[DetectHelmet]> = BehaviorRelay(value: [])
+    var velocity: CGFloat = 0
     
     // MARK: - UI Property
 
     private let beforeStartView: BeforeStartView = BeforeStartView()
     private let drivingView: DrivingView = DrivingView()
+    let label = UILabel()
     
     // MARK: - location Property
     
@@ -118,6 +120,23 @@ private extension MainViewController {
                 vc.faceDetectResult.accept([])
                 vc.setupBeforeMultiface()
             }).disposed(by: disposeBag)
+        
+        helmetDetectResult
+            .withUnretained(self)
+            .subscribe(onNext: { vc, result in
+                if result.count >= 100 {
+                    if vc.detectHelmet(detectResult: result) {
+                        vc.label.textColor = .black
+                        vc.label.backgroundColor = UIColor.green
+                        vc.label.text = "helmet"
+                    } else {
+                        vc.label.textColor = .white
+                        vc.label.backgroundColor = UIColor.systemRed
+                        vc.label.text = "nonHelmet"
+                    }
+                    vc.label.sizeToFit()
+                }
+        }).disposed(by: disposeBag)
     }
     
     func setupBeforeMultiface() {
@@ -156,7 +175,6 @@ private extension MainViewController {
                 print(result.count)
                 if result.count >= 100 {
                     detectHelmet = vc.detectHelmet(detectResult: result)
-                    print(detectHelmet)
                     vc.beforeStartView.resultDetectHelmet(isCorrect: detectHelmet)
                     if detectHelmet {
                         vc.detectDisposeBag = DisposeBag()
@@ -170,8 +188,43 @@ private extension MainViewController {
     }
     
     func setupStart() {
+        var detectMultiFace: Bool = false
+        var detectHelmet: Bool = false
+
         beforeStartView.isHidden = true
         drivingView.isHidden = false
+        
+        faceDetectResult
+            .withUnretained(self)
+            .subscribe(onNext: { vc, result in
+                if result.count >= 100 {
+                    detectMultiFace = vc.detectMultiface(detectResult: result)
+                    if detectMultiFace {
+                        vc.drivingView.multiFaceWarningView.isHidden = false
+                        vc.drivingView.helmetWarningView.isHidden = false
+                        vc.drivingView.velocityView.isHidden = true
+                    } else {
+                        let helmetResult = vc.helmetDetectResult.value
+                        detectHelmet = vc.detectHelmet(detectResult: helmetResult)
+                        if !detectHelmet {
+                            vc.drivingView.multiFaceWarningView.isHidden = true
+                            vc.drivingView.helmetWarningView.isHidden = false
+                            vc.drivingView.velocityView.isHidden = true
+                        } else {
+                            let velocity = vc.velocity
+                            if velocity > 25 {
+                                vc.drivingView.multiFaceWarningView.isHidden = true
+                                vc.drivingView.helmetWarningView.isHidden = true
+                                vc.drivingView.velocityView.isHidden = false
+                            } else {
+                                vc.drivingView.multiFaceWarningView.isHidden = true
+                                vc.drivingView.helmetWarningView.isHidden = true
+                                vc.drivingView.velocityView.isHidden = true
+                            }
+                        }
+                    }
+                }
+        }).disposed(by: detectDisposeBag)
     }
 }
 
@@ -307,17 +360,6 @@ private extension MainViewController {
                 }
                 tempResult.append(result)
                 self.helmetDetectResult.accept(tempResult)
-                let label = UILabel()
-                
-                if detectHelmet(detectResult: tempResult) {
-                    label.textColor = .black
-                    label.backgroundColor = UIColor.green
-                } else {
-                    label.textColor = .white
-                    label.backgroundColor = UIColor.systemRed
-                }
-                label.text = "\(result.rawValue)"
-                label.sizeToFit()
                 
                 // UILabel 위치 설정
                 let labelX = faceBoundingBoxOnScreen.origin.x
@@ -461,7 +503,9 @@ extension MainViewController: CLLocationManagerDelegate {
         let currentSpeed = currentLocation.speed
         
         print("Current Speed: \(currentSpeed * 3.6) m/s")
+        
         drivingView.velocityView.bindView(velocity: currentSpeed * 3.6)
+        velocity = currentSpeed * 3.6
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

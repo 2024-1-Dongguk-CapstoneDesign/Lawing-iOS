@@ -79,7 +79,7 @@ extension BeforeStartView {
 private extension BeforeStartView {
     func setupStyle() {
         
-        backgroundColor = .lawingBlack.withAlphaComponent(0.8)
+        backgroundColor = .lawingBlack.withAlphaComponent(0.7)
         stateLabel.do {
             $0.textColor = .lawingWhite
             $0.font = .caption2SemiBold

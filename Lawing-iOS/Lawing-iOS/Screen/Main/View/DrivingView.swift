@@ -50,7 +50,7 @@ extension DrivingView {
 
 private extension DrivingView {
     func setupStyle() {
-        backgroundColor = .lawingBlack.withAlphaComponent(0.8)
+        backgroundColor = .lawingBlack.withAlphaComponent(0.7)
         
         multiFaceWarningView.isHidden = true
         helmetWarningView.isHidden = true
