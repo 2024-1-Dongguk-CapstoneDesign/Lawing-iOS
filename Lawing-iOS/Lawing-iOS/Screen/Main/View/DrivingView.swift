@@ -79,7 +79,7 @@ private extension DrivingView {
         }
         
         velocityWarningView.snp.makeConstraints {
-            $0.height.equalTo(234)
+            $0.height.equalTo(180)
             $0.horizontalEdges.equalToSuperview().inset(18)
             $0.bottom.equalTo(velocityView.snp.top).inset(20)
         }

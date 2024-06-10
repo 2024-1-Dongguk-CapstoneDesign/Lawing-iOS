@@ -69,6 +69,7 @@ extension BeforeStartView {
     
     func correctAllState() {
         stateLabel.text = "전동 킥보드 이용이 가능합니다!"
+        stateLabel.textColor = .systemGreen
         stateLabel.isHidden = false
         retryHelmetView.isHidden = true
         retryMultiFaceView.isHidden = true
@@ -81,7 +82,7 @@ private extension BeforeStartView {
         backgroundColor = .lawingBlack.withAlphaComponent(0.8)
         stateLabel.do {
             $0.textColor = .lawingWhite
-            $0.font = .titleSemiBold
+            $0.font = .caption2SemiBold
             $0.textAlignment = .center
         }
         

@@ -28,7 +28,7 @@ extension VelocityView {
         if velocity < 0 {
             velocityLabel.text = "0km/h"
         }
-        velocityLabel.text = "\(velocity)km/h"
+        velocityLabel.text = String(format: "%.2fkm/h", velocity)
     }
 }
 
@@ -41,7 +41,7 @@ private extension VelocityView {
         
         [titleLabel, velocityLabel].forEach {
             $0.do {
-                $0.font = .caption1Bold
+                $0.font = .caption2SemiBold
                 $0.textColor = .lawingBlack
             }
         }

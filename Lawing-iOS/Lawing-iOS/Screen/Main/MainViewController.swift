@@ -40,6 +40,7 @@ final class MainViewController: UIViewController {
         }
     }
     var faceDetectResult: BehaviorRelay<[Int]> = BehaviorRelay(value: [])
+    var helmetDetectResult: BehaviorRelay<[DetectHelmet]> = BehaviorRelay(value: [])
     
     // MARK: - UI Property
 
@@ -105,7 +106,8 @@ private extension MainViewController {
         beforeStartView.retryHelmetView.retryButton
             .rx.tap
             .withUnretained(self)
-            .subscribe(onNext: { vc, _ in
+            .subscribe(onNext: { vc, _ in                
+                vc.helmetDetectResult.accept([])
                 vc.setupBeforeHelmet()
             }).disposed(by: disposeBag)
         
@@ -128,11 +130,11 @@ private extension MainViewController {
         faceDetectResult
             .withUnretained(self)
             .subscribe(onNext: { vc, result in
-                print(result.count)
                 if result.count >= 100 {
                     detectMultiFace = vc.detectMultiface(detectResult: result)
                     vc.beforeStartView.resultDetectMultiFace(isCorrect: !detectMultiFace)
                     if !detectMultiFace {
+                        vc.helmetDetectResult.accept([])
                         vc.setupBeforeHelmet()
                         vc.detectDisposeBag = DisposeBag()
                     }
@@ -141,7 +143,30 @@ private extension MainViewController {
     }
     
     func setupBeforeHelmet() {
+        var detectHelmet: Bool = false
+
+        beforeStartView.isHidden = false
+        drivingView.isHidden = true
         
+        beforeStartView.setupHelmet()
+        
+        helmetDetectResult
+            .withUnretained(self)
+            .subscribe(onNext: { vc, result in
+                print(result.count)
+                if result.count >= 100 {
+                    detectHelmet = vc.detectHelmet(detectResult: result)
+                    print(detectHelmet)
+                    vc.beforeStartView.resultDetectHelmet(isCorrect: detectHelmet)
+                    if detectHelmet {
+                        vc.detectDisposeBag = DisposeBag()
+                        vc.beforeStartView.correctAllState()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            vc.setupStart()
+                        }
+                    }
+                }
+        }).disposed(by: disposeBag)
     }
     
     func setupStart() {
@@ -234,7 +259,7 @@ private extension MainViewController {
             let faceBoundingBoxPath = CGPath(rect: faceBoundingBoxOnScreen, transform: nil)
             let faceBoundingBoxShape = CAShapeLayer()
             
-            faceBoundingBoxShape.strokeColor = UIColor.green.cgColor
+            faceBoundingBoxShape.strokeColor = UIColor.systemBlue.cgColor
             faceBoundingBoxShape.path = faceBoundingBoxPath
             faceBoundingBoxShape.fillColor = UIColor.clear.cgColor
             view.layer.addSublayer(faceBoundingBoxShape)
@@ -275,13 +300,19 @@ private extension MainViewController {
             
             // 자른 얼굴 부분으로 helmet detect
             detectHelmet(image: croppedImage) { [weak self] result in
+                guard let self else { return }
+                var tempResult = self.helmetDetectResult.value
+                if tempResult.count >= 100 {
+                    tempResult.removeFirst()
+                }
+                tempResult.append(result)
+                self.helmetDetectResult.accept(tempResult)
                 let label = UILabel()
                 
-                switch result {
-                case .helmet:
+                if detectHelmet(detectResult: tempResult) {
                     label.textColor = .black
                     label.backgroundColor = UIColor.green
-                default:
+                } else {
                     label.textColor = .white
                     label.backgroundColor = UIColor.systemRed
                 }
@@ -294,8 +325,8 @@ private extension MainViewController {
                 label.frame.origin = CGPoint(x: labelX, y: labelY)
                 
                 // UILabel을 view에 추가
-                self?.view.addSubview(label)
-                self?.labels.append(label)
+                self.view.addSubview(label)
+                self.labels.append(label)
             }
         }
     }
