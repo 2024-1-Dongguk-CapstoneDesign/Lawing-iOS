@@ -22,11 +22,16 @@ extension UIViewController {
     }
     
     /// 화면밖 터치시 키보드를 내려 주는 메서드
-    func hideKeyboard() {
+    func hideKeyboard(forDelegate: UIGestureRecognizerDelegate? = nil) {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(UIViewController.dismissKeyboard))
+
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
+        
+        if let forDelegate {
+            tap.delegate = forDelegate
+        }
     }
     
     func setupStatusBar(forColor: UIColor) {

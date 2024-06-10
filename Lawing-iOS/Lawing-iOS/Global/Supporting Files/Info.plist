@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&apos;Lawing&apos;이(가) 카메라에 접근하려고 합니다</string>
+	<string>운전 면허증을 촬영하기 위해서는 카메라 접근 허용이 필요합니다.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

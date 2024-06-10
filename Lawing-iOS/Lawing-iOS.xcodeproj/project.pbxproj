@@ -21,6 +21,8 @@
 		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
+		D03FACDB2C1194260088955D /* LicenseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FACDA2C1194260088955D /* LicenseAPIService.swift */; };
+		D03FACFB2C11B82A0088955D /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FACFA2C11B82A0088955D /* UIImage+.swift */; };
 		D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */; };
 		D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2522BF2941A0025DF0B /* LoginMainView.swift */; };
 		D065F2592BF29CDD0025DF0B /* LoginRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2582BF29CDD0025DF0B /* LoginRetryView.swift */; };
@@ -77,6 +79,8 @@
 		1B2E2C572C15D7540052003D /* DrivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingView.swift; sourceTree = "<group>"; };
 		D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
+		D03FACDA2C1194260088955D /* LicenseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseAPIService.swift; sourceTree = "<group>"; };
+		D03FACFA2C11B82A0088955D /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		D065F2522BF2941A0025DF0B /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		D065F2582BF29CDD0025DF0B /* LoginRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRetryView.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				D0B8830D2BEB716300633FD8 /* UIButton+.swift */,
 				D0B883102BEB71A700633FD8 /* UITextField+.swift */,
 				D0B883162BEB76BF00633FD8 /* UILabel+.swift */,
+				D03FACFA2C11B82A0088955D /* UIImage+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				D0E6412A2C0F86CE003B43CB /* DTO */,
+				D03FACDA2C1194260088955D /* LicenseAPIService.swift */,
 			);
 			path = License;
 			sourceTree = "<group>";
@@ -646,10 +652,12 @@
 				D065F2692BF3A4720025DF0B /* LicenseInfoModalView.swift in Sources */,
 				D0E641402C1049D9003B43CB /* MemberAPIService.swift in Sources */,
 				1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */,
+				D03FACFB2C11B82A0088955D /* UIImage+.swift in Sources */,
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
 				1B1D07F92C11B12100EE991A /* VelocityView.swift in Sources */,
+				D03FACDB2C1194260088955D /* LicenseAPIService.swift in Sources */,
 				D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */,
 				D0E6413E2C1048C4003B43CB /* NetworkResult.swift in Sources */,
 				D0E641342C0F8B20003B43CB /* LoginTypeRequestDTO.swift in Sources */,
@@ -814,7 +822,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6ML57N96S3;
+				DEVELOPMENT_TEAM = X395BM5WW7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lawing-iOS/Global/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "로그인을 위해서는 Face ID 활성화가 필요합니다.";
@@ -846,7 +854,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6ML57N96S3;
+				DEVELOPMENT_TEAM = X395BM5WW7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lawing-iOS/Global/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "로그인을 위해서는 Face ID 활성화가 필요합니다.";

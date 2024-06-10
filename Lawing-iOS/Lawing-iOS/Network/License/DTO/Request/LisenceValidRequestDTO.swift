@@ -8,7 +8,6 @@
 import Foundation
 
 struct LisenceValidRequestDTO: Codable {
-    let organization: String
     let birthDate: String
     let licenseNo01: String
     let licenseNo02: String
@@ -16,5 +15,4 @@ struct LisenceValidRequestDTO: Codable {
     let licenseNo04: String
     let serialNo: String
     let userName: String
-    let licenseNumber: String
 }
