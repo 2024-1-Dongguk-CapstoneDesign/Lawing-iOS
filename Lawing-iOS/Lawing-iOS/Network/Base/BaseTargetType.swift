@@ -55,16 +55,19 @@ extension BaseTargetType {
     }
     
     var headers: [String : String]? {
-        guard let accessToken = UserDefaults.standard.string(forKey: "AccessToken") else { return [:] }
         
         switch self {
         case .postMemberSocialLogin(let kakaoAccessToken, _):
             return ["Content-Type": "application/json",
                     "kakaoAccessToken": kakaoAccessToken]
         case .postLisenceOCR:
+            guard let accessToken = UserDefaults.standard.string(forKey: "AccessToken") else { return [:] }
+
             return ["Content-Type": "multipart/form-data",
                     "Authorization": "Bearer \(accessToken)"]
         case .postLisenceValid:
+            guard let accessToken = UserDefaults.standard.string(forKey: "AccessToken") else { return [:] }
+
             return ["Content-Type": "application/json",
                     "Authorization": "Bearer \(accessToken)"]
         }
