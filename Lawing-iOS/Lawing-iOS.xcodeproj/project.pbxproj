@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1D07F62C11AE2100EE991A /* lawingHelmet3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */; };
+		1B1D07F92C11B12100EE991A /* VelocityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07F82C11B12100EE991A /* VelocityView.swift */; };
+		1B1D07FB2C11B20000EE991A /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FA2C11B20000EE991A /* CheckView.swift */; };
+		1B1D07FD2C11B25200EE991A /* RideEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FC2C11B25200EE991A /* RideEndView.swift */; };
+		1B1D07FF2C11B2BB00EE991A /* RetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D07FE2C11B2BB00EE991A /* RetryView.swift */; };
+		1B2E2C562C15C6660052003D /* BeforeStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C552C15C6660052003D /* BeforeStartView.swift */; };
+		1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E2C572C15D7540052003D /* DrivingView.swift */; };
+		1B2E2C6F2C17554F0052003D /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C6E2C17554F0052003D /* RxBlocking */; };
+		1B2E2C712C17554F0052003D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C702C17554F0052003D /* RxCocoa */; };
+		1B2E2C732C17554F0052003D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C722C17554F0052003D /* RxRelay */; };
+		1B2E2C752C17554F0052003D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E2C742C17554F0052003D /* RxSwift */; };
 		1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BA4C68F2C11A334008DB8F9 /* Kingfisher */; };
 		D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */; };
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
@@ -62,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = lawingHelmet3.mlmodel; sourceTree = "<group>"; };
+		1B1D07F82C11B12100EE991A /* VelocityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelocityView.swift; sourceTree = "<group>"; };
+		1B1D07FA2C11B20000EE991A /* CheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		1B1D07FC2C11B25200EE991A /* RideEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideEndView.swift; sourceTree = "<group>"; };
+		1B1D07FE2C11B2BB00EE991A /* RetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryView.swift; sourceTree = "<group>"; };
+		1B2E2C552C15C6660052003D /* BeforeStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeStartView.swift; sourceTree = "<group>"; };
+		1B2E2C572C15D7540052003D /* DrivingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingView.swift; sourceTree = "<group>"; };
 		D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
 		D03FACDA2C1194260088955D /* LicenseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseAPIService.swift; sourceTree = "<group>"; };
@@ -116,19 +134,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2E2C732C17554F0052003D /* RxRelay in Frameworks */,
+				1B2E2C712C17554F0052003D /* RxCocoa in Frameworks */,
 				D0B882F52BEB6D3100633FD8 /* SnapKit in Frameworks */,
 				D0B882FE2BEB6DB200633FD8 /* Moya in Frameworks */,
 				1BA4C6902C11A334008DB8F9 /* Kingfisher in Frameworks */,
 				D0E641222C0F5341003B43CB /* KakaoSDKUser in Frameworks */,
 				D0B882F82BEB6D3D00633FD8 /* Then in Frameworks */,
+				1B2E2C6F2C17554F0052003D /* RxBlocking in Frameworks */,
 				D0E641202C0F5341003B43CB /* KakaoSDKCommon in Frameworks */,
 				D0E6411E2C0F5341003B43CB /* KakaoSDKAuth in Frameworks */,
+				1B2E2C752C17554F0052003D /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1D07F42C11AE1B00EE991A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B1D07F52C11AE2100EE991A /* lawingHelmet3.mlmodel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1B1D07F72C11B11400EE991A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B1D07FA2C11B20000EE991A /* CheckView.swift */,
+				1B1D07F82C11B12100EE991A /* VelocityView.swift */,
+				1B1D07FC2C11B25200EE991A /* RideEndView.swift */,
+				1B1D07FE2C11B2BB00EE991A /* RetryView.swift */,
+				1B2E2C552C15C6660052003D /* BeforeStartView.swift */,
+				1B2E2C572C15D7540052003D /* DrivingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D03F075E2C070CA600B9DD83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +400,7 @@
 		D0B883022BEB6F0800633FD8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1B1D07F42C11AE1B00EE991A /* Model */,
 				D0B883182BEB810B00633FD8 /* Font */,
 				D0B882E82BEB645900633FD8 /* Assets.xcassets */,
 				D0B882E52BEB645700633FD8 /* Main.storyboard */,
@@ -414,6 +458,7 @@
 		D0B883082BEB704600633FD8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1B1D07F72C11B11400EE991A /* View */,
 				D03F075C2C06D1CD00B9DD83 /* MainViewController.swift */,
 			);
 			path = Main;
@@ -542,6 +587,10 @@
 				D0E6411F2C0F5341003B43CB /* KakaoSDKCommon */,
 				D0E641212C0F5341003B43CB /* KakaoSDKUser */,
 				1BA4C68F2C11A334008DB8F9 /* Kingfisher */,
+				1B2E2C6E2C17554F0052003D /* RxBlocking */,
+				1B2E2C702C17554F0052003D /* RxCocoa */,
+				1B2E2C722C17554F0052003D /* RxRelay */,
+				1B2E2C742C17554F0052003D /* RxSwift */,
 			);
 			productName = "Lawing-iOS";
 			productReference = D0B882DC2BEB645700633FD8 /* Lawing-iOS.app */;
@@ -577,6 +626,7 @@
 				D0B882FC2BEB6DB200633FD8 /* XCRemoteSwiftPackageReference "Moya" */,
 				D0E6411C2C0F5341003B43CB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = D0B882DD2BEB645700633FD8 /* Products */;
 			projectDirPath = "";
@@ -617,13 +667,16 @@
 				D03FAD312C1634FE0088955D /* SplashViewController.swift in Sources */,
 				D0B883232BEB81F400633FD8 /* FontLiterals.swift in Sources */,
 				D0B883172BEB76BF00633FD8 /* UILabel+.swift in Sources */,
+				1B1D07FD2C11B25200EE991A /* RideEndView.swift in Sources */,
 				D065F25E2BF39E2B0025DF0B /* WelcomeView.swift in Sources */,
 				D065F2592BF29CDD0025DF0B /* LoginRetryView.swift in Sources */,
 				D065F2622BF39E570025DF0B /* WelcomeViewController.swift in Sources */,
 				D065F2672BF3A45E0025DF0B /* LicenseInfoModalViewController.swift in Sources */,
 				D0E641392C104834003B43CB /* BaseService.swift in Sources */,
+				1B1D07F62C11AE2100EE991A /* lawingHelmet3.mlmodel in Sources */,
 				D0B8830C2BEB714A00633FD8 /* UIStackView+.swift in Sources */,
 				D065F25B2BF29CEC0025DF0B /* LoginRetryViewController.swift in Sources */,
+				1B1D07FF2C11B2BB00EE991A /* RetryView.swift in Sources */,
 				D0B8830E2BEB716300633FD8 /* UIButton+.swift in Sources */,
 				D0E641292C0F8645003B43CB /* BaseTargetType.swift in Sources */,
 				D0B883152BEB71F300633FD8 /* UIViewController+.swift in Sources */,
@@ -633,10 +686,12 @@
 				D065F2692BF3A4720025DF0B /* LicenseInfoModalView.swift in Sources */,
 				D03FAD2C2C140AB30088955D /* ValidLicenseViewController.swift in Sources */,
 				D0E641402C1049D9003B43CB /* MemberAPIService.swift in Sources */,
+				1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */,
 				D03FACFB2C11B82A0088955D /* UIImage+.swift in Sources */,
 				D0B8830A2BEB70ED00633FD8 /* UIView+.swift in Sources */,
 				D0B882E42BEB645700633FD8 /* ViewController.swift in Sources */,
 				D0B882E02BEB645700633FD8 /* AppDelegate.swift in Sources */,
+				1B1D07F92C11B12100EE991A /* VelocityView.swift in Sources */,
 				D03FACDB2C1194260088955D /* LicenseAPIService.swift in Sources */,
 				D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */,
 				D0E6413E2C1048C4003B43CB /* NetworkResult.swift in Sources */,
@@ -647,6 +702,8 @@
 				D0B882E22BEB645700633FD8 /* SceneDelegate.swift in Sources */,
 				D065F2702BF3C3FC0025DF0B /* EnterLicenseInfoViewController.swift in Sources */,
 				D0B883252BEB91B900633FD8 /* ColorLiterals.swift in Sources */,
+				1B2E2C562C15C6660052003D /* BeforeStartView.swift in Sources */,
+				1B1D07FB2C11B20000EE991A /* CheckView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,6 +938,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
 		1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -924,6 +989,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1B2E2C6E2C17554F0052003D /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		1B2E2C702C17554F0052003D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		1B2E2C722C17554F0052003D /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		1B2E2C742C17554F0052003D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E2C6D2C17554F0052003D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		1BA4C68F2C11A334008DB8F9 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1BA4C68E2C11A334008DB8F9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
