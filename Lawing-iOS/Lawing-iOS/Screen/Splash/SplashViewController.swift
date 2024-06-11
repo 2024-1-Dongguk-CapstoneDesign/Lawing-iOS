@@ -29,7 +29,6 @@ final class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
         
         setupStyle()
         setupHierarchy()
@@ -44,6 +43,12 @@ final class SplashViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.isNavigationBarHidden = false
     }
 }
 

@@ -14,6 +14,7 @@ final class EnterLicenseInfoViewController: UIViewController {
     private let rootView = EnterLicenseInfoView()
     private let regionData: [RegionModel] = RegionModel.dummy()
     private let regionText: [String] = RegionModel.fetchDummyForText()
+    private var validResult: String?
     
     // MARK: - Life Cycle
     
@@ -25,11 +26,16 @@ final class EnterLicenseInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
         hideKeyboard(forDelegate: self)
         
         setupDelegate()
         setupTarget()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -72,18 +78,32 @@ extension EnterLicenseInfoViewController {
         LicenseAPIService.shared.postLisenceValid(request: request) { response in
             switch response {
             case .success(let data):
-                print("아아아아아아아")
+                if data?.statusCode == 200 {
+                    let validLicenseVC = ValidLicenseViewController(result: true, description: "")
+                    self.navigationController?.pushViewController(validLicenseVC, animated: true)
+                } else {
+                    let descriptionMessege = data?.description ?? ""
+                    let validLicenseVC = ValidLicenseViewController(result: false, description: descriptionMessege)
+                    self.navigationController?.pushViewController(validLicenseVC, animated: true)
+                }
             default:
                 break
             }
         }
-    }
+}
     
     private func postLisenceOCR(imageData: Data) {
         LicenseAPIService.shared.postLisenceOCR(imageData: imageData) { response in
             switch response {
             case .success(let data):
-                print("아아아아아아아")
+                if data?.statusCode == 200 {
+                    let validLicenseVC = ValidLicenseViewController(result: true, description: "")
+                    self.navigationController?.pushViewController(validLicenseVC, animated: true)
+                } else {
+                    let descriptionMessege = data?.description ?? ""
+                    let validLicenseVC = ValidLicenseViewController(result: false, description: descriptionMessege)
+                    self.navigationController?.pushViewController(validLicenseVC, animated: true)
+                }
             default:
                 break
             }
@@ -111,6 +131,7 @@ extension EnterLicenseInfoViewController {
         
         let doneAction = UIAlertAction(title: "선택", style: .default) { (action) in
             let selectedValue = self.regionText[self.rootView.regionPickerView.selectedRow(inComponent: 0)]
+            self.rootView.regionTextField.layer.shadowColor = UIColor.lawingGray3.cgColor
             self.rootView.regionTextField.text = selectedValue
         }
         alert.addAction(doneAction)
@@ -140,6 +161,7 @@ extension EnterLicenseInfoViewController {
 
     private func registerLicenseButtonTapped() {
         print("registerLicenseButtonTapped")
+        
         postLiseceValid()
     }
 }

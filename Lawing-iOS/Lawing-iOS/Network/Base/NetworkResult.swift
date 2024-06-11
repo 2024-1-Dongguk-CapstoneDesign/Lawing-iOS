@@ -15,7 +15,6 @@ enum NetworkResult<T> {
     case apiArr                     // 존재하지 않는 api를 호출했을 때 (404)
     case pathErr                    // 경로 에러 발생했을 때 (405)
     case registerErr                // 데이터 등록 오류가 발생했을 때 (409)
-    
     case networkFail                // 네트워크 연결 실패했을 때
     case decodeErr                  // 데이터는 받아왔으나 DTO 형식으로 decode가 되지 않을 때
 }

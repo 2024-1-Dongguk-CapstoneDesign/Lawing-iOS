@@ -16,7 +16,10 @@ class BaseService {
             if let decodedData = fetchDecodeData(data: data, responseType: T.self) {
                 return .success(decodedData)
             } else { return .decodeErr }
-        case 400: return .requestErr
+        case 400:
+            if let decodedData = fetchDecodeData(data: data, responseType: T.self) {
+                return .success(decodedData)
+            } else { return .decodeErr }
         case 401: return .unAuthentication
         case 403: return .unAuthorization
         case 404: return .apiArr
