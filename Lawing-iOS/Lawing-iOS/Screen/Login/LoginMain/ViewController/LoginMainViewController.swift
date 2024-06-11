@@ -27,9 +27,14 @@ final class LoginMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
         
         setTarget()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
@@ -38,25 +43,7 @@ extension LoginMainViewController {
     // MARK: - Private Method
     
     private func setTarget() {
-        rootView.setupLoginButton(action: loginButtonTapped)
         rootView.setupKakaoButton(action: kakaoButtonTapped)
-    }
-    
-    private func loginButtonTapped() {
-        print("loginButtonTapped")
-        
-        authContext.localizedFallbackTitle = ""
-        authContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                   localizedReason: "인증이 필요합니다.") { (success, error) in
-            DispatchQueue.main.async {
-                if success {
-                    print("인증에 성공했습니다.")
-                    //킥보드 이용 뷰컨 푸시
-                } else if error != nil {
-                    self.navigationController?.pushViewController(LoginRetryViewController(), animated: true)
-                }
-            }
-        }
     }
     
     private func kakaoButtonTapped() {

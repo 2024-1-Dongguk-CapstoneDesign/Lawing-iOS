@@ -53,7 +53,7 @@ extension LicenseInfoModalView {
     private func setupStyle() {
         self.backgroundColor = .lawingWhite
         
-        licenseImageView.backgroundColor = .lightGray
+        licenseImageView.image = .license
         
         titleLabel.do {
             $0.text = "로잉을 이용하기 위해서는\n운전 면허증 등록이 필수입니다!"
@@ -87,8 +87,7 @@ extension LicenseInfoModalView {
         
         licenseImageView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(25)
-            $0.horizontalEdges.equalToSuperview().inset(70)
-            $0.height.equalTo(110)
+            $0.centerX.equalToSuperview()
         }
         
         registerLicenseButton.snp.makeConstraints {

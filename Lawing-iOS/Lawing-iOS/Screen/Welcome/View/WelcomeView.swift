@@ -40,7 +40,7 @@ extension WelcomeView {
     private func setupStyle() {
         self.backgroundColor = .lawingWhite
         
-        welcomeImageView.backgroundColor = .lightGray
+        welcomeImageView.image = .clap
         
         titleLabel.do {
             $0.text = "환영합니다!"
@@ -65,18 +65,16 @@ extension WelcomeView {
     
     private func setupLayout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(119)
+            $0.bottom.equalTo(welcomeImageView.snp.top).offset(-21)
             $0.centerX.equalToSuperview()
         }
         
         welcomeImageView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(55)
-            $0.centerX.equalToSuperview()
-            $0.height.width.equalTo(149)
+            $0.center.equalToSuperview()
         }
         
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(welcomeImageView.snp.bottom).offset(55)
+            $0.top.equalTo(welcomeImageView.snp.bottom).offset(21)
             $0.centerX.equalToSuperview()
         }
     }

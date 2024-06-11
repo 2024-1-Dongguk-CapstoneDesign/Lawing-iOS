@@ -23,6 +23,9 @@
 		D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03F075F2C070CC100B9DD83 /* RegionModel.swift */; };
 		D03FACDB2C1194260088955D /* LicenseAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FACDA2C1194260088955D /* LicenseAPIService.swift */; };
 		D03FACFB2C11B82A0088955D /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FACFA2C11B82A0088955D /* UIImage+.swift */; };
+		D03FAD2C2C140AB30088955D /* ValidLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FAD2B2C140AB30088955D /* ValidLicenseViewController.swift */; };
+		D03FAD2E2C140ABE0088955D /* ValidLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FAD2D2C140ABE0088955D /* ValidLicenseView.swift */; };
+		D03FAD312C1634FE0088955D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03FAD302C1634FE0088955D /* SplashViewController.swift */; };
 		D065F24E2BF293E90025DF0B /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */; };
 		D065F2532BF2941A0025DF0B /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2522BF2941A0025DF0B /* LoginMainView.swift */; };
 		D065F2592BF29CDD0025DF0B /* LoginRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065F2582BF29CDD0025DF0B /* LoginRetryView.swift */; };
@@ -81,6 +84,9 @@
 		D03F075F2C070CC100B9DD83 /* RegionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionModel.swift; sourceTree = "<group>"; };
 		D03FACDA2C1194260088955D /* LicenseAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseAPIService.swift; sourceTree = "<group>"; };
 		D03FACFA2C11B82A0088955D /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		D03FAD2B2C140AB30088955D /* ValidLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidLicenseViewController.swift; sourceTree = "<group>"; };
+		D03FAD2D2C140ABE0088955D /* ValidLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidLicenseView.swift; sourceTree = "<group>"; };
+		D03FAD302C1634FE0088955D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D065F24D2BF293E90025DF0B /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		D065F2522BF2941A0025DF0B /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		D065F2582BF29CDD0025DF0B /* LoginRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRetryView.swift; sourceTree = "<group>"; };
@@ -172,6 +178,39 @@
 				D03F075F2C070CC100B9DD83 /* RegionModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D03FAD282C140A510088955D /* ValidLicense */ = {
+			isa = PBXGroup;
+			children = (
+				D03FAD2A2C140A9E0088955D /* View */,
+				D03FAD292C140A970088955D /* ViewController */,
+			);
+			path = ValidLicense;
+			sourceTree = "<group>";
+		};
+		D03FAD292C140A970088955D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D03FAD2B2C140AB30088955D /* ValidLicenseViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D03FAD2A2C140A9E0088955D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D03FAD2D2C140ABE0088955D /* ValidLicenseView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D03FAD2F2C1634CA0088955D /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				D03FAD302C1634FE0088955D /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		D065F24F2BF293EE0025DF0B /* ViewController */ = {
@@ -374,10 +413,12 @@
 			isa = PBXGroup;
 			children = (
 				D0B882E32BEB645700633FD8 /* ViewController.swift */,
+				D03FAD2F2C1634CA0088955D /* Splash */,
 				D0B883062BEB702B00633FD8 /* Login */,
-				D0B883072BEB703400633FD8 /* Join */,
+				D065F25C2BF39D980025DF0B /* Welcome */,
 				D065F2632BF3A4220025DF0B /* LicenseInfoModal */,
 				D065F26A2BF3C3B70025DF0B /* EnterLicenseInfo */,
+				D03FAD282C140A510088955D /* ValidLicense */,
 				D0B883082BEB704600633FD8 /* Main */,
 			);
 			path = Screen;
@@ -412,14 +453,6 @@
 				D065F2552BF29C7E0025DF0B /* LoginRetry */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		D0B883072BEB703400633FD8 /* Join */ = {
-			isa = PBXGroup;
-			children = (
-				D065F25C2BF39D980025DF0B /* Welcome */,
-			);
-			path = Join;
 			sourceTree = "<group>";
 		};
 		D0B883082BEB704600633FD8 /* Main */ = {
@@ -631,6 +664,7 @@
 				D03F075D2C06D1CD00B9DD83 /* MainViewController.swift in Sources */,
 				D0E6413B2C10489F003B43CB /* MoyaPlugin.swift in Sources */,
 				D0E641362C0F8B7C003B43CB /* MemberTokenResponseDTO.swift in Sources */,
+				D03FAD312C1634FE0088955D /* SplashViewController.swift in Sources */,
 				D0B883232BEB81F400633FD8 /* FontLiterals.swift in Sources */,
 				D0B883172BEB76BF00633FD8 /* UILabel+.swift in Sources */,
 				1B1D07FD2C11B25200EE991A /* RideEndView.swift in Sources */,
@@ -650,6 +684,7 @@
 				D0E641302C0F895E003B43CB /* LisenceResponseDTO.swift in Sources */,
 				D0B883112BEB71A700633FD8 /* UITextField+.swift in Sources */,
 				D065F2692BF3A4720025DF0B /* LicenseInfoModalView.swift in Sources */,
+				D03FAD2C2C140AB30088955D /* ValidLicenseViewController.swift in Sources */,
 				D0E641402C1049D9003B43CB /* MemberAPIService.swift in Sources */,
 				1B2E2C582C15D7540052003D /* DrivingView.swift in Sources */,
 				D03FACFB2C11B82A0088955D /* UIImage+.swift in Sources */,
@@ -662,6 +697,7 @@
 				D0E6413E2C1048C4003B43CB /* NetworkResult.swift in Sources */,
 				D0E641342C0F8B20003B43CB /* LoginTypeRequestDTO.swift in Sources */,
 				D03F07602C070CC100B9DD83 /* RegionModel.swift in Sources */,
+				D03FAD2E2C140ABE0088955D /* ValidLicenseView.swift in Sources */,
 				D065F26E2BF3C3EC0025DF0B /* EnterLicenseInfoView.swift in Sources */,
 				D0B882E22BEB645700633FD8 /* SceneDelegate.swift in Sources */,
 				D065F2702BF3C3FC0025DF0B /* EnterLicenseInfoViewController.swift in Sources */,
