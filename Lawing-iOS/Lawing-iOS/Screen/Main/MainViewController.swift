@@ -93,12 +93,14 @@ final class MainViewController: UIViewController {
         
         getCameraFrames()
         startSession()
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         stopSession()
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
@@ -480,7 +482,7 @@ private extension MainViewController {
 
 private extension MainViewController {
     func setupStyle() {
-        
+        view.backgroundColor = .lawingWhite
     }
     
     func setupLayout() {

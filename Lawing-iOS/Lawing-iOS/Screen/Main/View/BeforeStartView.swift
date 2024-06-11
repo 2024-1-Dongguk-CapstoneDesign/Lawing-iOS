@@ -111,7 +111,7 @@ private extension BeforeStartView {
         }
         
         stateLabel.snp.makeConstraints {
-            $0.top.equalTo(checkHelmetView.snp.bottom).offset(102)
+            $0.bottom.equalToSuperview().inset(100)
             $0.centerX.equalToSuperview()
         }
         

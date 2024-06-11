@@ -93,7 +93,9 @@ extension SplashViewController {
             DispatchQueue.main.async {
                 if success {
                     print("인증에 성공했습니다.")
-                    //킥보드 이용 뷰컨 푸시
+                    
+                    let mainVC = MainViewController()
+                    self.navigationController?.pushViewController(mainVC, animated: true)
                 } else if error != nil {
                     self.navigationController?.pushViewController(LoginRetryViewController(), animated: true)
                 }
