@@ -34,23 +34,37 @@ extension DrivingView {
             helmetWarningView.isHidden = true
             velocityWarningView.isHidden = true
             multiFaceWarningView.startTimer()
+            helmetWarningView.resetTimer()
+            velocityWarningView.resetTimer()
         case .helmet:
             multiFaceWarningView.isHidden = true
             helmetWarningView.isHidden = false
             velocityWarningView.isHidden = true
+            multiFaceWarningView.resetTimer()
             helmetWarningView.startTimer()
+            velocityWarningView.resetTimer()
         case .velocity:
             multiFaceWarningView.isHidden = true
             helmetWarningView.isHidden = true
             velocityWarningView.isHidden = false
             velocityWarningView.startTimer()
+            multiFaceWarningView.resetTimer()
+            helmetWarningView.startTimer()
+            velocityWarningView.startTimer()
+        case .allClear:
+            multiFaceWarningView.isHidden = true
+            helmetWarningView.isHidden = true
+            velocityWarningView.isHidden = true
+            multiFaceWarningView.resetTimer()
+            helmetWarningView.resetTimer()
+            velocityWarningView.resetTimer()
         }
     }
 }
 
 private extension DrivingView {
     func setupStyle() {
-        backgroundColor = .lawingBlack.withAlphaComponent(0.5)
+//        backgroundColor = .lawingBlack.withAlphaComponent(0.5)
         
         multiFaceWarningView.isHidden = true
         helmetWarningView.isHidden = true

@@ -124,8 +124,9 @@ private extension MainViewController {
         helmetDetectResult
             .withUnretained(self)
             .subscribe(onNext: { vc, result in
-                if result.count >= 100 {
-                    if vc.detectHelmet(detectResult: result) {
+                if result.count >= 20 {
+                    let lastResult = Array(result.suffix(20))
+                    if vc.detectHelmet(detectResult: lastResult) {
                         vc.label.textColor = .black
                         vc.label.backgroundColor = UIColor.green
                         vc.label.text = "helmet"
@@ -149,7 +150,7 @@ private extension MainViewController {
         faceDetectResult
             .withUnretained(self)
             .subscribe(onNext: { vc, result in
-                if result.count >= 100 {
+                if result.count >= 60 {
                     detectMultiFace = vc.detectMultiface(detectResult: result)
                     vc.beforeStartView.resultDetectMultiFace(isCorrect: !detectMultiFace)
                     if !detectMultiFace {
@@ -173,7 +174,7 @@ private extension MainViewController {
             .withUnretained(self)
             .subscribe(onNext: { vc, result in
                 print(result.count)
-                if result.count >= 100 {
+                if result.count >= 60 {
                     detectHelmet = vc.detectHelmet(detectResult: result)
                     vc.beforeStartView.resultDetectHelmet(isCorrect: detectHelmet)
                     if detectHelmet {
@@ -191,6 +192,7 @@ private extension MainViewController {
     func setupStart() {
         var detectMultiFace: Bool = false
         var detectHelmet: Bool = false
+        var isDetecting: Bool = false
 
         beforeStartView.isHidden = true
         drivingView.isHidden = false
@@ -198,31 +200,28 @@ private extension MainViewController {
         faceDetectResult
             .withUnretained(self)
             .subscribe(onNext: { vc, result in
-                if result.count >= 100 {
+                
+                if result.count >= 30 && !isDetecting {
+                    isDetecting = true
                     detectMultiFace = vc.detectMultiface(detectResult: result)
                     if detectMultiFace {
-                        vc.drivingView.multiFaceWarningView.isHidden = false
-                        vc.drivingView.helmetWarningView.isHidden = true
-                        vc.drivingView.velocityWarningView.isHidden = true
+                        vc.drivingView.warningView(warningType: .multiplePeople)
                     } else {
                         let helmetResult = vc.helmetDetectResult.value
                         detectHelmet = vc.detectHelmet(detectResult: helmetResult)
                         if !detectHelmet {
-                            vc.drivingView.multiFaceWarningView.isHidden = true
-                            vc.drivingView.helmetWarningView.isHidden = false
-                            vc.drivingView.velocityWarningView.isHidden = true
+                            vc.drivingView.warningView(warningType: .helmet)
                         } else {
                             let velocity = vc.velocity
                             if velocity > 25 {
-                                vc.drivingView.multiFaceWarningView.isHidden = true
-                                vc.drivingView.helmetWarningView.isHidden = true
-                                vc.drivingView.velocityWarningView.isHidden = false
+                                vc.drivingView.warningView(warningType: .velocity)
                             } else {
-                                vc.drivingView.multiFaceWarningView.isHidden = true
-                                vc.drivingView.helmetWarningView.isHidden = true
-                                vc.drivingView.velocityWarningView.isHidden = true
+                                vc.drivingView.warningView(warningType: .allClear)
                             }
                         }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        isDetecting = false
                     }
                 }
         }).disposed(by: detectDisposeBag)
@@ -382,7 +381,7 @@ private extension MainViewController {
         }
         
         // request 생성
-        let request = VNCoreMLRequest(model: visionModel) { [weak self] request, error in
+        let request = VNCoreMLRequest(model: visionModel) { request, error in
             guard error == nil else {
                 fatalError("Failed Request")
             }

@@ -11,12 +11,14 @@ enum RideEndType {
     case helmet
     case multiplePeople
     case velocity
+    case allClear
     
     var title: String {
         switch self {
         case .helmet: return "헬멧이 감지되지 않습니다!"
         case .multiplePeople: return "다중 인원 탑승이 감지됩니다!"
         case .velocity: return "과속이 감지됩니다!\n감속하지 않을 시"
+        default: return ""
         }
     }
 }
@@ -30,10 +32,16 @@ final class RideEndView: UIView {
     private let warningLabel: UILabel = UILabel()
     private let timerLabel: UILabel = UILabel()
     
+    var isTimer: Bool = false
     var timer: Timer?
     var secondsRemaining = 20 {
         didSet {
             timerLabel.text = "\(secondsRemaining)"
+            if secondsRemaining == 0 {
+                self.isHidden = true
+                self.superview?.showToast(message: "패널티가 부과되었습니다")
+                self.resetTimer()
+            }
         }
     }
     
@@ -52,15 +60,26 @@ final class RideEndView: UIView {
 
 extension RideEndView {
     func startTimer() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self, selector: #selector(updateTimer),
-                                     userInfo: nil,
-                                     repeats: true)
+        if !isTimer {
+            timer?.invalidate()
+            isTimer = false
+            secondsRemaining = 20
+            timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                         target: self, selector: #selector(updateTimer),
+                                         userInfo: nil,
+                                         repeats: true)
+        }
         
     }
     
+    func resetTimer() {
+        timer?.invalidate()
+        isTimer = false
+        secondsRemaining = 20
+    }
+    
     @objc func updateTimer() {
+        isTimer = true
         if secondsRemaining > 0 {
             secondsRemaining -= 1
         } else {
